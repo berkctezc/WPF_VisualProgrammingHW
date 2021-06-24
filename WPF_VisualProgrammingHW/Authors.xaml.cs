@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_VisualProgrammingHW._data;
 
 namespace WPF_VisualProgrammingHW
 {
@@ -23,6 +24,26 @@ namespace WPF_VisualProgrammingHW
         public Authors()
         {
             InitializeComponent();
+        }
+
+        private DbLibrarySystemEntities db = new DbLibrarySystemEntities();
+
+        private void Authors_Load(object sender, EventArgs e)
+        {
+            Read();
+        }
+
+
+        void Read()
+        {
+            DataGrid.ItemsSource = (from x in db.TBL_AUTHOR
+                select new
+                {
+                    x.ID,
+                    x.NAME,
+                    x.SURNAME,
+                    x.STATUS
+                }).Where(x => x.STATUS == true).ToList();
         }
     }
 }
