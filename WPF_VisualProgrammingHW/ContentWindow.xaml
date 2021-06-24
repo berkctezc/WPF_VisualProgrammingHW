@@ -1,0 +1,26 @@
+﻿<Window x:Class="WPF_VisualProgrammingHW.ContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_VisualProgrammingHW"
+        mc:Ignorable="d"
+        Title="ContentWindow" Height="574" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="767*"/>
+        </Grid.ColumnDefinitions>
+        <Button  Grid.Column="1" Margin="0,15,682,0" HorizontalAlignment="Right" Width="67" Height="85" VerticalAlignment="Top"
+                 Click="Authors_Click">
+            <StackPanel>
+                <Image Source="_assets/writing.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Authors"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Frame 
+            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Height="390" Margin="12,121,0,0" VerticalAlignment="Top" Width="723" NavigationUIVisibility="Hidden" 
+            />
+
+    </Grid>
+</Window>
