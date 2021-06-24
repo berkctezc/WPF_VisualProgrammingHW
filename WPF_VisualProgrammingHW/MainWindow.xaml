@@ -11,7 +11,7 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBox Margin="75,38,-279,0" TextWrapping="Wrap" Text="Please enter your username here" Grid.Column="1" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204" TextChanged="TextBox_TextChanged"/>
+        <TextBox Margin="75,38,-279,0" TextWrapping="Wrap" Text="Please enter your username here" Grid.Column="1" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204"/>
         <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Username" Margin="75,14,-138,0" RenderTransformOrigin="0.943,0.595" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="63"/>
         <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Password" Margin="77,82,-142,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="-0.056,2.744"/>
         <TextBox Margin="80,113,-284,0" TextWrapping="Wrap" Text="Please enter your password here" Grid.Column="1" Height="22" VerticalAlignment="Top"/>
