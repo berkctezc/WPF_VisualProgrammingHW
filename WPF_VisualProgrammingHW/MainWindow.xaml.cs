@@ -26,11 +26,11 @@ namespace WPF_VisualProgrammingHW
             InitializeComponent();
         }
 
-        private DbLibrarySystemEntities db = new DbLibrarySystemEntities();
+        private DbLibrarySystemEntities _db = new DbLibrarySystemEntities();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var query = (from x in db.TBL_ADMIN
+            var query = (from x in _db.TBL_ADMIN
                 where x.USERNAME == txtUsername.Text & x.PASSWORD == txtPass.Password
                 select x);
 
@@ -61,7 +61,7 @@ namespace WPF_VisualProgrammingHW
 
         private void MainWindow_OnClosed(object sender, EventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            Environment.Exit(0);
         }
     }
 }
