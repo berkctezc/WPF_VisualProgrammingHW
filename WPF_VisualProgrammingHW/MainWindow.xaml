@@ -12,10 +12,12 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <DockPanel>
-            <TextBox x:Name="txtUsername" Margin="77,55,-317,0" TextWrapping="Wrap" Text="Please enter your username here" Grid.Column="1" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240"/>
-            <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Username" Margin="84,15,-170,0" RenderTransformOrigin="0.943,0.595" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86"/>
+            <TextBox x:Name="txtUsername" 
+                     Margin="77,55,-317,0" TextWrapping="Wrap" Text="Please enter your username here" Grid.Column="1" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" GotKeyboardFocus="txtUsername_GotKeyboardFocus"/>
+            <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Username" Margin="84,0,-170,179" RenderTransformOrigin="0.943,0.595" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="86"/>
             <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Password" Margin="78,85,-158,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="-0.056,2.744"/>
-            <TextBox x:Name="txtPass" Margin="78,120,-317,0" TextWrapping="Wrap" Text="Please enter your password here" Grid.Column="1" Height="29" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="txtPass"
+                     Margin="78,120,-317,0" Grid.Column="1" Height="29" VerticalAlignment="Top" GotKeyboardFocus="txtPass_GotKeyboardFocus" Password="password"/>
             <Image Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Left" Height="50" Margin="14,28,-65,0" VerticalAlignment="Top" Width="51" Source="_assets/user.png"/>
             <Image Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Left" Height="50" Margin="13,102,-64,0" VerticalAlignment="Top" Width="51" Source="_assets/key.png"/>
             <Button x:Name="loginButton" Grid.ColumnSpan="2" Grid.Column="0" Content="Login" HorizontalAlignment="Left" Margin="88,169,-233,0" VerticalAlignment="Top" Width="145" Height="43" Click="Button_Click"/>

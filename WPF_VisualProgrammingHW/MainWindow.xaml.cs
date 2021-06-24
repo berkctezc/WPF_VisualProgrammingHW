@@ -31,7 +31,7 @@ namespace WPF_VisualProgrammingHW
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var query = (from x in db.TBL_ADMIN
-                where x.USERNAME == txtUsername.Text & x.PASSWORD == txtPass.Text
+                where x.USERNAME == txtUsername.Text & x.PASSWORD == txtPass.Password
                 select x);
 
             if (query.Any())
@@ -45,6 +45,18 @@ namespace WPF_VisualProgrammingHW
                 MessageBox.Show("Invalid Username or Password, Please Try Again", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+        }
+
+        private void txtUsername_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (txtUsername.Text == "Please enter your username here") 
+                txtUsername.Text = "";
+        }
+
+        private void txtPass_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (txtPass.Password == "password")
+                txtPass.Password = "";
         }
     }
 }
