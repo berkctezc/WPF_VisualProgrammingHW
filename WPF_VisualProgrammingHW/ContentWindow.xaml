@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_VisualProgrammingHW"
         mc:Ignorable="d"
-        Title="ContentWindow" Height="640" Width="960"
-        Closed="ContentWindow_OnClosed">
+        Title="Library Management System" Height="640" Width="960"
+        Closed="ContentWindow_OnClosed" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
@@ -40,6 +40,13 @@
             <StackPanel>
                 <Image Source="_assets/publisher.png" Width="65" />
                 <TextBlock TextAlignment="Center"><Run Text="Publishers"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button  Grid.Column="1" Margin="0,8,230,0" HorizontalAlignment="Right" Width="66" Height="86" VerticalAlignment="Top"
+                 Click="Clear_Click" Grid.ColumnSpan="2">
+            <StackPanel>
+                <Image Source="_assets/clear.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Clear"/></TextBlock>
             </StackPanel>
         </Button>
         <Frame 
