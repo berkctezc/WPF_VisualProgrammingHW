@@ -24,12 +24,12 @@ namespace WPF_VisualProgrammingHW
             InitializeComponent();
         }
         
-        private Authors authorsWindow;
+        private Authors _authorsWindow;
         private void Authors_Click(object sender, RoutedEventArgs e)
         {
-            authorsWindow = new Authors();
+            _authorsWindow = new Authors();
             MyFrame.Content = null;
-            MyFrame.Content = authorsWindow;
+            MyFrame.Content = _authorsWindow;
         }
 
         private void Books_Click(object sender, RoutedEventArgs e)
@@ -47,9 +47,8 @@ namespace WPF_VisualProgrammingHW
             throw new NotImplementedException();
         }
 
-        private void ContentWindow_OnClosed(object sender, EventArgs e)
-        {
-            System.Windows.Application.Current.Shutdown();
-        }
+        private void Clear_Click(object sender, RoutedEventArgs e) => MyFrame.Content = null;
+        private void ContentWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
+
     }
 }
