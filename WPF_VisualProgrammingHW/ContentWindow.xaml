@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_VisualProgrammingHW"
         mc:Ignorable="d"
-        Title="ContentWindow" Height="640" Width="960">
+        Title="ContentWindow" Height="640" Width="960"
+        Closed="ContentWindow_OnClosed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>

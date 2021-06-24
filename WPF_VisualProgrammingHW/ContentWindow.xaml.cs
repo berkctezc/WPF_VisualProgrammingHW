@@ -46,5 +46,10 @@ namespace WPF_VisualProgrammingHW
         {
             throw new NotImplementedException();
         }
+
+        private void ContentWindow_OnClosed(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

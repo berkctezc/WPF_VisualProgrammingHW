@@ -58,5 +58,10 @@ namespace WPF_VisualProgrammingHW
             if (txtPass.Password == "password")
                 txtPass.Password = "";
         }
+
+        private void MainWindow_OnClosed(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

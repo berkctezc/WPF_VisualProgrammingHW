@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_VisualProgrammingHW"
         mc:Ignorable="d"
-        Title="Login Screen" Height="258" Width="353.333" FontSize="16" ResizeMode="NoResize">
+        Title="Login Screen" Height="258" Width="353.333" FontSize="16" ResizeMode="NoResize"
+        Closed="MainWindow_OnClosed">
     <Grid Margin="10,0,417,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
