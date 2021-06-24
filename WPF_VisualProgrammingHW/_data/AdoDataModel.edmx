@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbLibrarySystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_ADMIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="30" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="15" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_AUTHOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_BOOK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOOK" Type="varchar" MaxLength="50" />
+          <Property Name="AUTHOR" Type="int" />
+          <Property Name="CATEGORY" Type="int" />
+          <Property Name="PUBLISHER" Type="int" />
+          <Property Name="YEAR" Type="varchar" MaxLength="4" />
+          <Property Name="NUMBEROFPAGES" Type="varchar" MaxLength="5" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_CATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_PUBLISHER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PUBLISHER" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <Association Name="FK_TBL_BOOK_TBL_AUTHOR">
+          <End Role="TBL_AUTHOR" Type="Self.TBL_AUTHOR" Multiplicity="0..1" />
+          <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_AUTHOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_BOOK">
+              <PropertyRef Name="AUTHOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_BOOK_TBL_CATEGORY">
+          <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="0..1" />
+          <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_BOOK">
+              <PropertyRef Name="CATEGORY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_BOOK_TBL_PUBLISHER">
+          <End Role="TBL_PUBLISHER" Type="Self.TBL_PUBLISHER" Multiplicity="0..1" />
+          <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PUBLISHER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_BOOK">
+              <PropertyRef Name="PUBLISHER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbLibrarySystemModelStoreContainer">
+          <EntitySet Name="TBL_ADMIN" EntityType="Self.TBL_ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_AUTHOR" EntityType="Self.TBL_AUTHOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_BOOK" EntityType="Self.TBL_BOOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CATEGORY" EntityType="Self.TBL_CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PUBLISHER" EntityType="Self.TBL_PUBLISHER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBL_BOOK_TBL_AUTHOR" Association="Self.FK_TBL_BOOK_TBL_AUTHOR">
+            <End Role="TBL_AUTHOR" EntitySet="TBL_AUTHOR" />
+            <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_BOOK_TBL_CATEGORY" Association="Self.FK_TBL_BOOK_TBL_CATEGORY">
+            <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+            <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_BOOK_TBL_PUBLISHER" Association="Self.FK_TBL_BOOK_TBL_PUBLISHER">
+            <End Role="TBL_PUBLISHER" EntitySet="TBL_PUBLISHER" />
+            <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbLibrarySystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_ADMIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TBL_AUTHOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Boolean" />
+          <NavigationProperty Name="TBL_BOOK" Relationship="Self.FK_TBL_BOOK_TBL_AUTHOR" FromRole="TBL_AUTHOR" ToRole="TBL_BOOK" />
+        </EntityType>
+        <EntityType Name="TBL_BOOK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOOK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AUTHOR" Type="Int32" />
+          <Property Name="CATEGORY" Type="Int32" />
+          <Property Name="PUBLISHER" Type="Int32" />
+          <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NUMBEROFPAGES" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Boolean" />
+          <NavigationProperty Name="TBL_AUTHOR" Relationship="Self.FK_TBL_BOOK_TBL_AUTHOR" FromRole="TBL_BOOK" ToRole="TBL_AUTHOR" />
+          <NavigationProperty Name="TBL_CATEGORY" Relationship="Self.FK_TBL_BOOK_TBL_CATEGORY" FromRole="TBL_BOOK" ToRole="TBL_CATEGORY" />
+          <NavigationProperty Name="TBL_PUBLISHER" Relationship="Self.FK_TBL_BOOK_TBL_PUBLISHER" FromRole="TBL_BOOK" ToRole="TBL_PUBLISHER" />
+        </EntityType>
+        <EntityType Name="TBL_CATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Boolean" />
+          <NavigationProperty Name="TBL_BOOK" Relationship="Self.FK_TBL_BOOK_TBL_CATEGORY" FromRole="TBL_CATEGORY" ToRole="TBL_BOOK" />
+        </EntityType>
+        <EntityType Name="TBL_PUBLISHER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PUBLISHER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Boolean" />
+          <NavigationProperty Name="TBL_BOOK" Relationship="Self.FK_TBL_BOOK_TBL_PUBLISHER" FromRole="TBL_PUBLISHER" ToRole="TBL_BOOK" />
+        </EntityType>
+        <Association Name="FK_TBL_BOOK_TBL_AUTHOR">
+          <End Role="TBL_AUTHOR" Type="Self.TBL_AUTHOR" Multiplicity="0..1" />
+          <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_AUTHOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_BOOK">
+              <PropertyRef Name="AUTHOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_BOOK_TBL_CATEGORY">
+          <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="0..1" />
+          <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_BOOK">
+              <PropertyRef Name="CATEGORY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_BOOK_TBL_PUBLISHER">
+          <End Role="TBL_PUBLISHER" Type="Self.TBL_PUBLISHER" Multiplicity="0..1" />
+          <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PUBLISHER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_BOOK">
+              <PropertyRef Name="PUBLISHER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbLibrarySystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_ADMIN" EntityType="Self.TBL_ADMIN" />
+          <EntitySet Name="TBL_AUTHOR" EntityType="Self.TBL_AUTHOR" />
+          <EntitySet Name="TBL_BOOK" EntityType="Self.TBL_BOOK" />
+          <EntitySet Name="TBL_CATEGORY" EntityType="Self.TBL_CATEGORY" />
+          <EntitySet Name="TBL_PUBLISHER" EntityType="Self.TBL_PUBLISHER" />
+          <AssociationSet Name="FK_TBL_BOOK_TBL_AUTHOR" Association="Self.FK_TBL_BOOK_TBL_AUTHOR">
+            <End Role="TBL_AUTHOR" EntitySet="TBL_AUTHOR" />
+            <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_BOOK_TBL_CATEGORY" Association="Self.FK_TBL_BOOK_TBL_CATEGORY">
+            <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+            <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_BOOK_TBL_PUBLISHER" Association="Self.FK_TBL_BOOK_TBL_PUBLISHER">
+            <End Role="TBL_PUBLISHER" EntitySet="TBL_PUBLISHER" />
+            <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbLibrarySystemModelStoreContainer" CdmEntityContainer="DbLibrarySystemEntities">
+          <EntitySetMapping Name="TBL_ADMIN">
+            <EntityTypeMapping TypeName="DbLibrarySystemModel.TBL_ADMIN">
+              <MappingFragment StoreEntitySet="TBL_ADMIN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_AUTHOR">
+            <EntityTypeMapping TypeName="DbLibrarySystemModel.TBL_AUTHOR">
+              <MappingFragment StoreEntitySet="TBL_AUTHOR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_BOOK">
+            <EntityTypeMapping TypeName="DbLibrarySystemModel.TBL_BOOK">
+              <MappingFragment StoreEntitySet="TBL_BOOK">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BOOK" ColumnName="BOOK" />
+                <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="PUBLISHER" ColumnName="PUBLISHER" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="NUMBEROFPAGES" ColumnName="NUMBEROFPAGES" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CATEGORY">
+            <EntityTypeMapping TypeName="DbLibrarySystemModel.TBL_CATEGORY">
+              <MappingFragment StoreEntitySet="TBL_CATEGORY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PUBLISHER">
+            <EntityTypeMapping TypeName="DbLibrarySystemModel.TBL_PUBLISHER">
+              <MappingFragment StoreEntitySet="TBL_PUBLISHER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PUBLISHER" ColumnName="PUBLISHER" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
