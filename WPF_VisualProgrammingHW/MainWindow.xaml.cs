@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_VisualProgrammingHW._data;
 
 namespace WPF_VisualProgrammingHW
 {
@@ -25,8 +26,24 @@ namespace WPF_VisualProgrammingHW
             InitializeComponent();
         }
 
+        private DbLibrarySystemEntities db = new DbLibrarySystemEntities();
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var query = (from x in db.TBL_ADMIN
+                where x.USERNAME == txtUsername.Text & x.PASSWORD == txtPass.Text
+                select x);
+
+            if (query.Any())
+            {
+                ContentWindow contentWindow = new ContentWindow();
+                contentWindow.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Username or Password, Please Try Again", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
     }
