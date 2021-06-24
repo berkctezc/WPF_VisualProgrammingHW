@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +64,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="_data\AdoDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdoDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_data\AdoDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_data\AdoDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdoDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="_data\TBL_ADMIN.cs">
+      <DependentUpon>AdoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_data\TBL_AUTHOR.cs">
+      <DependentUpon>AdoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_data\TBL_BOOK.cs">
+      <DependentUpon>AdoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_data\TBL_CATEGORY.cs">
+      <DependentUpon>AdoDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_data\TBL_PUBLISHER.cs">
+      <DependentUpon>AdoDataModel.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,19 +125,43 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="_data\AdoDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AdoDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="_data\AdoDataModel.edmx.diagram">
+      <DependentUpon>AdoDataModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="assets\user.png" />
+    <Resource Include="_assets\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="assets\key.png" />
+    <Resource Include="_assets\key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="_data\AdoDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdoDataModel.edmx</DependentUpon>
+      <LastGenOutput>AdoDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="_data\AdoDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdoDataModel.edmx</DependentUpon>
+      <LastGenOutput>AdoDataModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
