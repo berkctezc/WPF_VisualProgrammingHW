@@ -31,5 +31,20 @@ namespace WPF_VisualProgrammingHW
             MyFrame.Content = null;
             MyFrame.Content = authorsWindow;
         }
+
+        private void Books_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Categories_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Publishers_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

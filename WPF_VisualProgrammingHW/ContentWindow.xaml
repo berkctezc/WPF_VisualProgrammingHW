@@ -5,21 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_VisualProgrammingHW"
         mc:Ignorable="d"
-        Title="ContentWindow" Height="574" Width="800">
+        Title="ContentWindow" Height="640" Width="960">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="767*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="179*"/>
+            <ColumnDefinition Width="59*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button  Grid.Column="1" Margin="0,15,682,0" HorizontalAlignment="Right" Width="67" Height="85" VerticalAlignment="Top"
+        <Button  Grid.Column="1" Margin="0,6,329,0" HorizontalAlignment="Right" Width="66" Height="85" VerticalAlignment="Top"
                  Click="Authors_Click">
             <StackPanel>
                 <Image Source="_assets/writing.png" Width="65" />
                 <TextBlock TextAlignment="Center"><Run Text="Authors"/></TextBlock>
             </StackPanel>
         </Button>
+        <Button  Grid.Column="1" Margin="0,6,243,0" HorizontalAlignment="Right" Width="66" Height="85" VerticalAlignment="Top"
+                 Click="Books_Click">
+            <StackPanel>
+                <Image Source="_assets/bookshelf.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Books"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button  Grid.Column="1" Margin="0,7,157,0" HorizontalAlignment="Right" Width="68" Height="85" VerticalAlignment="Top"
+                 Click="Categories_Click">
+            <StackPanel>
+                <Image Source="_assets/categories.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Categories"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button  Grid.Column="1" Margin="0,7,77,0" HorizontalAlignment="Right" Width="66" Height="85" VerticalAlignment="Top"
+                 Click="Publishers_Click">
+            <StackPanel>
+                <Image Source="_assets/publisher.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Publishers"/></TextBlock>
+            </StackPanel>
+        </Button>
         <Frame 
-            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Height="390" Margin="12,121,0,0" VerticalAlignment="Top" Width="723" NavigationUIVisibility="Hidden" 
+            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Height="480" Margin="12,121,0,0" VerticalAlignment="Top" Width="930" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" 
             />
 
     </Grid>
