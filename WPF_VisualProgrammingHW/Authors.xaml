@@ -24,8 +24,8 @@
                 <Label Content="Surname" Height="30" VerticalAlignment="Top" Margin="43,114,55,0" RenderTransformOrigin="0.476,2.533"/>
                 <TextBox x:Name="txtSurname" Height="30" TextWrapping="Wrap" Margin="7,147,10,249" />
                 <Button x:Name="btnCreate" Content="Create" Margin="52,189,47,198" Click="btnCreate_Click"/>
-                <Button x:Name="btnRead" Content="Read" Width="75" Margin="53,236,52,151"/>
-                <Button x:Name="btnUpdate" Content="Update" Width="75" Margin="54,284,51,103"/>
+                <Button x:Name="btnRead" Content="Refresh" Width="75" Margin="53,236,52,151" Click="btnRead_Click"/>
+                <Button x:Name="btnUpdate" Content="Update" Width="75" Margin="54,284,51,103" Click="btnUptd_Click"/>
                 <Button x:Name="Delete" Content="Delete" Width="75" Margin="55,332,50,55"/>
             </Grid>
         </GroupBox>
@@ -48,8 +48,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnUpdate" Content="Update"></Button>
-                                    <Button x:Name="btnDelete" Content="Delete"></Button>
+                                    <Button x:Name="btnDelete" Content="Delete"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
