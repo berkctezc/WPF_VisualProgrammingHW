@@ -26,7 +26,6 @@
                 <Button x:Name="btnCreate" Content="Create" Margin="52,189,47,198" Click="btnCreate_Click"/>
                 <Button x:Name="btnRead" Content="Refresh" Width="75" Margin="53,236,52,151" Click="btnRead_Click"/>
                 <Button x:Name="btnUpdate" Content="Update" Width="75" Margin="54,284,51,103" Click="btnUptd_Click"/>
-                <Button x:Name="Delete" Content="Delete" Width="75" Margin="55,332,50,55"/>
             </Grid>
         </GroupBox>
 
@@ -48,7 +47,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Content="Delete"/>
+                                    <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_OnClick"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

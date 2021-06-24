@@ -79,5 +79,14 @@ namespace WPF_VisualProgrammingHW
             _db.SaveChanges();
             Read();
         }
+
+        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            int authorId = (dg.SelectedItem as TBL_AUTHOR).ID;
+            var authorToDelete = _db.TBL_AUTHOR.Single(a => a.ID == authorId);
+            _db.TBL_AUTHOR.Remove(authorToDelete);
+            _db.SaveChanges();
+            Read();
+        }
     }
 }
