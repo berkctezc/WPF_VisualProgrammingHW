@@ -59,25 +59,18 @@ namespace WPF_VisualProgrammingHW
         void Read()
         {
             dg.ItemsSource = null;
-           /* dg.ItemsSource = (from x in _db.TBL_BOOK
-                              select new
-                              {
-                                  x.ID,
-                                  x.BOOK,
-                                  AUTHOR = x.TBL_AUTHOR.NAME + " " + x.TBL_AUTHOR.SURNAME,
-                                  CATEGORY = x.TBL_CATEGORY.CATEGORY,
-                                  PUBLISHER = x.TBL_PUBLISHER.PUBLISHER,
-                                  x.YEAR,
-                                  NUMBEROFPAGES = x.NUMBEROFPAGES,
-                                  x.STATUS
-                              }).Where(x => x.STATUS == true).ToList();
-           */
 
-           dg.ItemsSource = _db.TBL_BOOK
-               .Include(x => x.TBL_AUTHOR)
-               .Include(x=>x.TBL_CATEGORY)
-               .Include(x => x.TBL_PUBLISHER)
-               .ToList();
+            dg.ItemsSource = _db.TBL_BOOK.Select(x => new BookViewModel()
+           {
+               ID = x.ID,
+               BOOK = x.BOOK,
+               AUTHOR = x.TBL_AUTHOR.NAME+" "+x.TBL_AUTHOR.SURNAME,
+               CATEGORY = x.TBL_CATEGORY.CATEGORY,
+               PUBLISHER = x.TBL_PUBLISHER.PUBLISHER,
+               YEAR = x.YEAR,
+               NUMBEROFPAGES = x.NUMBEROFPAGES,
+               STATUS = x.STATUS
+           }).ToList<BookViewModel>();
         }
 
         void Clear()
@@ -92,36 +85,44 @@ namespace WPF_VisualProgrammingHW
             TxtBook.Focus();
         }
 
-        private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        public class BookViewModel
         {
-            Console.WriteLine(dg.SelectedItem);
-
-
-            TxtId.Text = (dg.SelectedItem as TBL_BOOK).ID.ToString();
-            //TxtBook.Text = (dg.SelectedItem as TBL_BOOK)?.BOOK;
-            //comboAuthor.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_AUTHOR.NAME + " " + (dg.SelectedItem as TBL_BOOK)?.TBL_AUTHOR.SURNAME;
-            //comboCategory.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_CATEGORY.CATEGORY;
-            //comboPublisher.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_PUBLISHER.PUBLISHER;
-            //txtYear.Text = (dg.SelectedItem as TBL_BOOK)?.YEAR;
-            //txtPage.Text = (dg.SelectedItem as TBL_BOOK)?.NUMBEROFPAGES;
+            public int ID { get; set; }
+            public string BOOK { get; set; }
+            public string AUTHOR { get; set; }
+            public string CATEGORY { get; set; }
+            public string PUBLISHER { get; set; }
+            public string YEAR { get; set; }
+            public string NUMBEROFPAGES { get; set; }
+            public Nullable<bool> STATUS { get; set; }
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            TBL_BOOK t = new TBL_BOOK
-            {
-                BOOK = TxtBook.Text,
-                AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString()),
-                CATEGORY = int.Parse(comboCategory.SelectedValue.ToString()),
-                PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString()),
-                YEAR = txtYear.Text,
-                NUMBEROFPAGES = txtPage.Text,
-                STATUS = true
-            };
+            int? BookId = (dg.SelectedItem as BookViewModel)?.ID;
+            TxtId.Text = BookId.ToString();
+            TxtBook.Text= (dg.SelectedItem as BookViewModel)?.BOOK; //TxtBook.Text = _db.TBL_BOOK.Where(x => x.ID==BookId).Select(x=>x.BOOK).Single().ToString();
+            comboAuthor.Text = (dg.SelectedItem as BookViewModel)?.AUTHOR; //_db.TBL_BOOK.Where(x => x.ID==BookId).Select(x=>x.TBL_AUTHOR.NAME).Single().ToString();
+            comboCategory.Text = (dg.SelectedItem as BookViewModel)?.CATEGORY;
+            comboPublisher.Text = (dg.SelectedItem as BookViewModel)?.PUBLISHER;
+            txtYear.Text = (dg.SelectedItem as BookViewModel)?.YEAR;
+            txtPage.Text = (dg.SelectedItem as BookViewModel)?.NUMBEROFPAGES;
+        }
+
+        private async void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            TBL_BOOK t = new TBL_BOOK();
+            t.BOOK = TxtBook.Text;
+            t.AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString());
+            t.CATEGORY = int.Parse(comboCategory.SelectedValue.ToString());
+            t.PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString());
+            t.YEAR = txtYear.Text;
+            t.NUMBEROFPAGES = txtPage.Text;
+            t.STATUS = true;
+            
             _db.TBL_BOOK.Add(t);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             Read();
-            Clear();
         }
 
         private void btnRead_Click(object sender, RoutedEventArgs e)
@@ -129,21 +130,25 @@ namespace WPF_VisualProgrammingHW
             Read();
         }
 
-        private void btnUptd_Click(object sender, RoutedEventArgs e)
+        private async void btnUptd_Click(object sender, RoutedEventArgs e)
         {
-            //int authorId = (dg.SelectedItem as TBL_AUTHOR).ID;
+            int bookId = (dg.SelectedItem as BookViewModel).ID;
 
-            //TBL_AUTHOR authorToUpdate = (from a in _db.TBL_AUTHOR where a.ID == authorId select a).Single();
-            //authorToUpdate.NAME = txtName.Text;
-            //authorToUpdate.SURNAME = txtSurname.Text;
+            TBL_BOOK bookToUpdate = (from a in _db.TBL_BOOK where a.ID == bookId select a).Single();
+            bookToUpdate.BOOK = TxtBook.Text;
+            bookToUpdate.AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString());
+            bookToUpdate.CATEGORY = int.Parse(comboCategory.SelectedValue.ToString());
+            bookToUpdate.PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString());
+            bookToUpdate.YEAR = txtYear.Text;
+            bookToUpdate.NUMBEROFPAGES = txtPage.Text;
 
-            //_db.SaveChanges();
-            //Read();
+            await _db.SaveChangesAsync();
+            Read();
         }
 
         private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            int bookId = (dg.SelectedItem as TBL_BOOK).ID;
+            int bookId = (dg.SelectedItem as BookViewModel).ID;
             var bookToDelete = _db.TBL_BOOK.Single(a => a.ID == bookId);
             _db.TBL_BOOK.Remove(bookToDelete);
             await _db.SaveChangesAsync();
