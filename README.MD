@@ -6,7 +6,7 @@ App consists of one login window and a content window. In content window corresp
 
 ## Preview
 
-<img src="README_ASSETS/preview.gif" width="90%" />
+![preview](README_ASSETS/preview.gif)
 
 ## Screenshots
 
