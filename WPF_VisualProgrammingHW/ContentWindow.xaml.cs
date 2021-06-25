@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WPF_VisualProgrammingHW
 {
@@ -25,6 +14,9 @@ namespace WPF_VisualProgrammingHW
         }
         
         private Authors _authorsWindow;
+        private Books _booksWindow;
+        private Categories _categoriesWindow;
+        private Publishers _publishersWindow;
         private void Authors_Click(object sender, RoutedEventArgs e)
         {
             _authorsWindow = new Authors();
@@ -34,17 +26,23 @@ namespace WPF_VisualProgrammingHW
 
         private void Books_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _booksWindow = new Books();
+            MyFrame.Content = null;
+            MyFrame.Content = _booksWindow;
         }
 
         private void Categories_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _categoriesWindow = new Categories();
+            MyFrame.Content = null;
+            MyFrame.Content = _categoriesWindow;
         }
 
         private void Publishers_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _publishersWindow = new Publishers();
+            MyFrame.Content = null;
+            MyFrame.Content = _publishersWindow;
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e) => MyFrame.Content = null;
