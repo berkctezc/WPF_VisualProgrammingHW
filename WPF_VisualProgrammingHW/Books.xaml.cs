@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,25 +41,25 @@ namespace WPF_VisualProgrammingHW
                                        }).ToList();
 
             comboCategory.ItemsSource = (from x in _db.TBL_CATEGORY
-                             select new
-                             {
-                                 x.ID,
-                                 x.CATEGORY
-                             }).ToList();
+                                         select new
+                                         {
+                                             x.ID,
+                                             x.CATEGORY
+                                         }).ToList();
 
-            comboPublisher.ItemsSource= (from x in _db.TBL_PUBLISHER
-                select new
-               {
-                    x.ID,
-                   x.PUBLISHER
-               }).ToList();
+            comboPublisher.ItemsSource = (from x in _db.TBL_PUBLISHER
+                                          select new
+                                          {
+                                              x.ID,
+                                              x.PUBLISHER
+                                          }).ToList();
         }
 
 
         void Read()
         {
             dg.ItemsSource = null;
-            dg.ItemsSource = (from x in _db.TBL_BOOK
+           /* dg.ItemsSource = (from x in _db.TBL_BOOK
                               select new
                               {
                                   x.ID,
@@ -67,44 +68,52 @@ namespace WPF_VisualProgrammingHW
                                   CATEGORY = x.TBL_CATEGORY.CATEGORY,
                                   PUBLISHER = x.TBL_PUBLISHER.PUBLISHER,
                                   x.YEAR,
-                                  PAGES = x.NUMBEROFPAGES,
+                                  NUMBEROFPAGES = x.NUMBEROFPAGES,
                                   x.STATUS
                               }).Where(x => x.STATUS == true).ToList();
+           */
+
+           dg.ItemsSource = _db.TBL_BOOK.Include(x => x.TBL_AUTHOR.NAME).Include(x=>x.TBL_CATEGORY.CATEGORY).Include(x => x.TBL_PUBLISHER.PUBLISHER).ToList();
         }
 
         void Clear()
         {
-            txtID.Text = "";
-            txtBook.Text = "";
+            TxtId.Text = "";
+            TxtBook.Text = "";
             comboAuthor.Text = "";
             comboCategory.Text = "";
             comboPublisher.Text = "";
             txtYear.Text = "";
             txtPage.Text = "";
-            txtBook.Focus();
+            TxtBook.Focus();
         }
 
         private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            txtID.Text = (dg.SelectedItem as TBL_BOOK)?.ID.ToString();
-            txtBook.Text = (dg.SelectedItem as TBL_BOOK)?.BOOK;
-            comboAuthor.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_AUTHOR.NAME + " " + (dg.SelectedItem as TBL_BOOK)?.TBL_AUTHOR.SURNAME;
-            comboCategory.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_CATEGORY.CATEGORY;
-            comboPublisher.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_PUBLISHER.PUBLISHER;
-            txtYear.Text = (dg.SelectedItem as TBL_BOOK)?.YEAR;
-            txtPage.Text = (dg.SelectedItem as TBL_BOOK)?.NUMBEROFPAGES;
+            Console.WriteLine(dg.SelectedItem);
+
+
+            TxtId.Text = (dg.SelectedItem as TBL_BOOK).ID.ToString();
+            //TxtBook.Text = (dg.SelectedItem as TBL_BOOK)?.BOOK;
+            //comboAuthor.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_AUTHOR.NAME + " " + (dg.SelectedItem as TBL_BOOK)?.TBL_AUTHOR.SURNAME;
+            //comboCategory.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_CATEGORY.CATEGORY;
+            //comboPublisher.Text = (dg.SelectedItem as TBL_BOOK)?.TBL_PUBLISHER.PUBLISHER;
+            //txtYear.Text = (dg.SelectedItem as TBL_BOOK)?.YEAR;
+            //txtPage.Text = (dg.SelectedItem as TBL_BOOK)?.NUMBEROFPAGES;
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            TBL_BOOK t = new TBL_BOOK();
-            t.BOOK = txtBook.Text;
-            t.AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString());
-            t.CATEGORY = int.Parse(comboCategory.SelectedValue.ToString());
-            t.PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString());
-            t.YEAR = txtYear.Text;
-            t.NUMBEROFPAGES = txtPage.Text;
-            t.STATUS = true;
+            TBL_BOOK t = new TBL_BOOK
+            {
+                BOOK = TxtBook.Text,
+                AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString()),
+                CATEGORY = int.Parse(comboCategory.SelectedValue.ToString()),
+                PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString()),
+                YEAR = txtYear.Text,
+                NUMBEROFPAGES = txtPage.Text,
+                STATUS = true
+            };
             _db.TBL_BOOK.Add(t);
             _db.SaveChanges();
             Read();

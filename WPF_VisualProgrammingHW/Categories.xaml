@@ -5,10 +5,49 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF_VisualProgrammingHW"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Categories">
+      d:DesignHeight="480" d:DesignWidth="930"
+      Title="Categories" Loaded="Categories_OnLoaded">
 
-    <Grid>
-        
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="361*"/>
+            <ColumnDefinition Width="104*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Operations" FontSize="16" HorizontalAlignment="Left" Height="454" Margin="716,19,0,7" Width="192" Grid.ColumnSpan="2">
+            <Grid Background="LightGray">
+                <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="7,45,143,351"/>
+                <TextBox x:Name="TxtId" TextWrapping="Wrap" Margin="48,51,48,349" IsEnabled="False"/>
+                <Label Content="Category" Height="34" VerticalAlignment="Top" Margin="5,78,94,0"/>
+                <TextBox x:Name="txtCategory" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,111,4,0" RenderTransformOrigin="0.941,0.633"/>
+                <Button x:Name="btnCreate" Content="Create" Margin="40,324,40,72" Click="btnCreate_Click"/>
+                <Button x:Name="btnRead" Content="Refresh" Margin="40,359,40,37" Click="btnRead_Click"/>
+                <Button x:Name="btnUpdate" Content="Update" Margin="40,392,40,4" Click="btnUptd_Click"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="0" Header="Categories" FontSize="16" HorizontalAlignment="Left" Height="459" Margin="11,10,0,0" VerticalAlignment="Top" Width="695">
+            <DataGrid AlternatingRowBackground="Tan" RowBackground="Aquamarine"
+                AutoGenerateColumns="False"
+                ColumnWidth="*" SelectedCellsChanged="DataGrid_OnSelectedCellsChanged" x:Name="dg" x:FieldModifier="public" HorizontalAlignment="Left" Height="420" Margin="0,7,0,0" VerticalAlignment="Top" Width="680">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontWeight="Bold" Header="#" Binding="{Binding ID}"/>
+                    <DataGridTextColumn Header="Category" Binding="{Binding CATEGORY}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Action"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_OnClick"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
     </Grid>
 </Page>
