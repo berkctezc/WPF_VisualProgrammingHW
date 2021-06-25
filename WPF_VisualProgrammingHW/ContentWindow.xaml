@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Library Management System" Height="640" Width="960"
         Closed="ContentWindow_OnClosed" ResizeMode="NoResize">
-    <Grid>
+    <Grid Background="Azure">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="179*"/>
