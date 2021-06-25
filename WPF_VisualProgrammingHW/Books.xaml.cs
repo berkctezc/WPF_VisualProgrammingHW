@@ -73,7 +73,11 @@ namespace WPF_VisualProgrammingHW
                               }).Where(x => x.STATUS == true).ToList();
            */
 
-           dg.ItemsSource = _db.TBL_BOOK.Include(x => x.TBL_AUTHOR.NAME).Include(x=>x.TBL_CATEGORY.CATEGORY).Include(x => x.TBL_PUBLISHER.PUBLISHER).ToList();
+           dg.ItemsSource = _db.TBL_BOOK
+               .Include(x => x.TBL_AUTHOR)
+               .Include(x=>x.TBL_CATEGORY)
+               .Include(x => x.TBL_PUBLISHER)
+               .ToList();
         }
 
         void Clear()
