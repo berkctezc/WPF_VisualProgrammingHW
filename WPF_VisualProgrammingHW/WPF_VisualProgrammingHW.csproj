@@ -180,7 +180,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AdoDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="README.MD" />
     <None Include="_data\AdoDataModel.edmx.diagram">
       <DependentUpon>AdoDataModel.edmx</DependentUpon>
     </None>
@@ -204,12 +203,6 @@
     <Resource Include="_assets\publisher.png" />
     <Resource Include="_assets\writing.png" />
     <Resource Include="_assets\clear.png" />
-    <Resource Include="README_assets\login.jpg" />
-    <Resource Include="README_assets\login_fail.jpg" />
-    <Resource Include="README_assets\preview.gif" />
-    <Resource Include="README_assets\view1.jpg" />
-    <Resource Include="README_assets\view2.jpg" />
-    <Resource Include="README_assets\view3.jpg" />
     <Content Include="_data\DB_tablesAndSeed.sql" />
     <Content Include="_data\AdoDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

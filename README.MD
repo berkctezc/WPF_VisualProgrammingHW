@@ -1,4 +1,4 @@
-﻿# WPF Library Management System
+# WPF Library Management System
 
 A Library Management Application Using .NET Framework 4.8, ADO.NET DB-First, WPF, Entity Framework.
 
