@@ -197,15 +197,19 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="README_assets\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="_assets\bookshelf.png" />
     <Resource Include="_assets\categories.png" />
     <Resource Include="_assets\publisher.png" />
     <Resource Include="_assets\writing.png" />
     <Resource Include="_assets\clear.png" />
+    <Resource Include="README_assets\login.jpg" />
+    <Resource Include="README_assets\login_fail.jpg" />
+    <Resource Include="README_assets\preview.gif" />
+    <Resource Include="README_assets\view1.jpg" />
+    <Resource Include="README_assets\view2.jpg" />
+    <Resource Include="README_assets\view3.jpg" />
     <Content Include="_data\DB_tablesAndSeed.sql" />
     <Content Include="_data\AdoDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
