@@ -49,7 +49,7 @@ namespace WPF_VisualProgrammingHW
             txtSurname.Text = (dg.SelectedItem as TBL_AUTHOR)?.SURNAME;
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             TBL_AUTHOR newAuthor = new TBL_AUTHOR()
             {
@@ -59,7 +59,7 @@ namespace WPF_VisualProgrammingHW
             };
 
             _db.TBL_AUTHOR.Add(newAuthor);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             Read();
         }
 
@@ -68,7 +68,7 @@ namespace WPF_VisualProgrammingHW
             Read();
         }
 
-        private void btnUptd_Click(object sender, RoutedEventArgs e)
+        private async void btnUptd_Click(object sender, RoutedEventArgs e)
         {
             int authorId = (dg.SelectedItem as TBL_AUTHOR).ID;
 
@@ -76,16 +76,16 @@ namespace WPF_VisualProgrammingHW
             authorToUpdate.NAME = txtName.Text;
             authorToUpdate.SURNAME = txtSurname.Text;
 
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             Read();
         }
 
-        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
             int authorId = (dg.SelectedItem as TBL_AUTHOR).ID;
             var authorToDelete = _db.TBL_AUTHOR.Single(a => a.ID == authorId);
             _db.TBL_AUTHOR.Remove(authorToDelete);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             Read();
         }
     }

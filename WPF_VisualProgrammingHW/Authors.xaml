@@ -17,15 +17,15 @@
         </Grid.ColumnDefinitions>
         <GroupBox Header="Operations" FontSize="16" HorizontalAlignment="Left" Height="454" Margin="716,19,0,7" Width="192" Grid.ColumnSpan="2">
             <Grid Background="LightGray">
-                <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="29,9,121,387"/>
-                <TextBox x:Name="txtId" Height="30" TextWrapping="Wrap" Margin="77,12,20,384" IsEnabled="False"/>
-                <Label Content="Name" Width="80" Height="30" VerticalAlignment="Top" Margin="52,48,48,0"/>
-                <TextBox x:Name="txtName" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="11,81,19,0" RenderTransformOrigin="0.941,0.633"/>
-                <Label Content="Surname" Height="30" VerticalAlignment="Top" Margin="43,114,55,0" RenderTransformOrigin="0.476,2.533"/>
-                <TextBox x:Name="txtSurname" Height="30" TextWrapping="Wrap" Margin="7,147,10,249" />
-                <Button x:Name="btnCreate" Content="Create" Margin="52,189,47,198" Click="btnCreate_Click"/>
-                <Button x:Name="btnRead" Content="Refresh" Width="75" Margin="53,236,52,151" Click="btnRead_Click"/>
-                <Button x:Name="btnUpdate" Content="Update" Width="75" Margin="54,284,51,103" Click="btnUptd_Click"/>
+                <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="16,6,134,390"/>
+                <TextBox x:Name="txtId" Height="30" TextWrapping="Wrap" Margin="60,9,24,387" IsEnabled="False"/>
+                <Label Content="Name" Height="31" VerticalAlignment="Top" Margin="4,39,122,0"/>
+                <TextBox x:Name="txtName" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,74,4,0" RenderTransformOrigin="0.941,0.633"/>
+                <Label Content="Surname" Height="30" VerticalAlignment="Top" Margin="4,104,94,0" RenderTransformOrigin="0.476,2.533"/>
+                <TextBox x:Name="txtSurname" Height="30" TextWrapping="Wrap" Margin="4,136,4,260" />
+                <Button x:Name="btnCreate" Content="Create" Margin="40,298,40,89" Click="btnCreate_Click"/>
+                <Button x:Name="btnRead" Content="Refresh" Margin="40,341,40,46" Click="btnRead_Click"/>
+                <Button x:Name="btnUpdate" Content="Update" Margin="40,383,40,4" Click="btnUptd_Click"/>
             </Grid>
         </GroupBox>
 
@@ -37,7 +37,6 @@
                     <DataGridTextColumn FontWeight="Bold" Header="#" Binding="{Binding ID}"/>
                     <DataGridTextColumn Header="Name" Binding="{Binding NAME}"/>
                     <DataGridTextColumn Header="Surname" Binding="{Binding SURNAME}"/>
-                    <DataGridTextColumn Header="Status" Binding="{Binding STATUS}"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
