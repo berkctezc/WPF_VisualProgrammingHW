@@ -12,11 +12,12 @@ namespace WPF_VisualProgrammingHW
         {
             InitializeComponent();
         }
-        
+
         private Authors _authorsWindow;
         private Books _booksWindow;
         private Categories _categoriesWindow;
         private Publishers _publishersWindow;
+
         private void Authors_Click(object sender, RoutedEventArgs e)
         {
             _authorsWindow = new Authors();
@@ -46,7 +47,7 @@ namespace WPF_VisualProgrammingHW
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e) => MyFrame.Content = null;
-        private void ContentWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
 
+        private void ContentWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
     }
 }

@@ -1,10 +1,10 @@
 ﻿<Page x:Class="WPF_VisualProgrammingHW.Authors"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WPF_VisualProgrammingHW"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="480" d:DesignWidth="930"
       Title="Authors"
       Background="White"
@@ -12,20 +12,20 @@
 
     <Grid Background="AliceBlue">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="361*"/>
-            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="361*" />
+            <ColumnDefinition Width="104*" />
         </Grid.ColumnDefinitions>
         <GroupBox Header="Operations" FontSize="16" HorizontalAlignment="Left" Height="454" Margin="716,19,0,7" Width="192" Grid.ColumnSpan="2">
             <Grid Background="LightGray">
-                <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="16,6,134,390"/>
-                <TextBox x:Name="txtId" Height="30" TextWrapping="Wrap" Margin="60,9,24,387" IsEnabled="False"/>
-                <Label Content="Name" Height="31" VerticalAlignment="Top" Margin="4,39,122,0"/>
-                <TextBox x:Name="txtName" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,74,4,0" RenderTransformOrigin="0.941,0.633"/>
-                <Label Content="Surname" Height="30" VerticalAlignment="Top" Margin="4,104,94,0" RenderTransformOrigin="0.476,2.533"/>
+                <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="16,6,134,390" />
+                <TextBox x:Name="txtId" Height="30" TextWrapping="Wrap" Margin="60,9,24,387" IsEnabled="False" />
+                <Label Content="Name" Height="31" VerticalAlignment="Top" Margin="4,39,122,0" />
+                <TextBox x:Name="txtName" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,74,4,0" RenderTransformOrigin="0.941,0.633" />
+                <Label Content="Surname" Height="30" VerticalAlignment="Top" Margin="4,104,94,0" RenderTransformOrigin="0.476,2.533" />
                 <TextBox x:Name="txtSurname" Height="30" TextWrapping="Wrap" Margin="4,136,4,260" />
-                <Button x:Name="btnCreate" Content="Create" Margin="40,298,40,89" Click="btnCreate_Click"/>
-                <Button x:Name="btnRead" Content="Refresh" Margin="40,341,40,46" Click="btnRead_Click"/>
-                <Button x:Name="btnUpdate" Content="Update" Margin="40,383,40,4" Click="btnUptd_Click"/>
+                <Button x:Name="btnCreate" Content="Create" Margin="40,298,40,89" Click="btnCreate_Click" />
+                <Button x:Name="btnRead" Content="Refresh" Margin="40,341,40,46" Click="btnRead_Click" />
+                <Button x:Name="btnUpdate" Content="Update" Margin="40,383,40,4" Click="btnUptd_Click" />
             </Grid>
         </GroupBox>
 
@@ -34,19 +34,19 @@
                 AutoGenerateColumns="False"
                 ColumnWidth="*" SelectedCellsChanged="DataGrid_OnSelectedCellsChanged" x:Name="dg" x:FieldModifier="public" HorizontalAlignment="Left" Height="420" Margin="0,7,0,0" VerticalAlignment="Top" Width="680">
                 <DataGrid.Columns>
-                    <DataGridTextColumn FontWeight="Bold" Header="#" Binding="{Binding ID}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding NAME}"/>
-                    <DataGridTextColumn Header="Surname" Binding="{Binding SURNAME}"/>
+                    <DataGridTextColumn FontWeight="Bold" Header="#" Binding="{Binding ID}" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding NAME}" />
+                    <DataGridTextColumn Header="Surname" Binding="{Binding SURNAME}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Action"/>
+                                <TextBlock Text="Action" />
                             </DataTemplate>
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_OnClick"/>
+                                    <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_OnClick" />
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -54,6 +54,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-
     </Grid>
 </Page>

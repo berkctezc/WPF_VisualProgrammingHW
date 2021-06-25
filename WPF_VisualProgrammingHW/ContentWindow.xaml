@@ -9,49 +9,47 @@
         Closed="ContentWindow_OnClosed" ResizeMode="NoResize">
     <Grid Background="Azure">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="179*"/>
-            <ColumnDefinition Width="59*"/>
-            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*" />
+            <ColumnDefinition Width="179*" />
+            <ColumnDefinition Width="59*" />
+            <ColumnDefinition Width="0*" />
         </Grid.ColumnDefinitions>
         <Button  Grid.Column="1" Margin="0,6,329,0" HorizontalAlignment="Right" Width="66" Height="85" VerticalAlignment="Top"
                  Click="Authors_Click">
             <StackPanel>
                 <Image Source="_assets/writing.png" Width="65" />
-                <TextBlock TextAlignment="Center"><Run Text="Authors"/></TextBlock>
+                <TextBlock TextAlignment="Center"><Run Text="Authors" /></TextBlock>
             </StackPanel>
         </Button>
         <Button  Grid.Column="1" Margin="0,6,243,0" HorizontalAlignment="Right" Width="66" Height="85" VerticalAlignment="Top"
                  Click="Books_Click">
             <StackPanel>
                 <Image Source="_assets/bookshelf.png" Width="65" />
-                <TextBlock TextAlignment="Center"><Run Text="Books"/></TextBlock>
+                <TextBlock TextAlignment="Center"><Run Text="Books" /></TextBlock>
             </StackPanel>
         </Button>
         <Button  Grid.Column="1" Margin="0,7,157,0" HorizontalAlignment="Right" Width="68" Height="85" VerticalAlignment="Top"
                  Click="Categories_Click">
             <StackPanel>
                 <Image Source="_assets/categories.png" Width="65" />
-                <TextBlock TextAlignment="Center"><Run Text="Categories"/></TextBlock>
+                <TextBlock TextAlignment="Center"><Run Text="Categories" /></TextBlock>
             </StackPanel>
         </Button>
         <Button  Grid.Column="1" Margin="0,7,77,0" HorizontalAlignment="Right" Width="66" Height="85" VerticalAlignment="Top"
                  Click="Publishers_Click">
             <StackPanel>
                 <Image Source="_assets/publisher.png" Width="65" />
-                <TextBlock TextAlignment="Center"><Run Text="Publishers"/></TextBlock>
+                <TextBlock TextAlignment="Center"><Run Text="Publishers" /></TextBlock>
             </StackPanel>
         </Button>
         <Button  Grid.Column="1" Margin="0,8,230,0" HorizontalAlignment="Right" Width="66" Height="86" VerticalAlignment="Top"
                  Click="Clear_Click" Grid.ColumnSpan="2">
             <StackPanel>
                 <Image Source="_assets/clear.png" Width="65" />
-                <TextBlock TextAlignment="Center"><Run Text="Clear"/></TextBlock>
+                <TextBlock TextAlignment="Center"><Run Text="Clear" /></TextBlock>
             </StackPanel>
         </Button>
-        <Frame 
-            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Height="480" Margin="12,121,0,0" VerticalAlignment="Top" Width="930" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" 
-            />
-
+        <Frame
+            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Height="480" Margin="12,121,0,0" VerticalAlignment="Top" Width="930" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

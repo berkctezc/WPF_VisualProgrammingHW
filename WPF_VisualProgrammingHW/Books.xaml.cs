@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPF_VisualProgrammingHW._data;
 
 namespace WPF_VisualProgrammingHW
@@ -55,25 +43,24 @@ namespace WPF_VisualProgrammingHW
                                           }).ToList();
         }
 
-
-        void Read()
+        private void Read()
         {
             dg.ItemsSource = null;
 
             dg.ItemsSource = _db.TBL_BOOK.Select(x => new BookViewModel()
-           {
-               ID = x.ID,
-               BOOK = x.BOOK,
-               AUTHOR = x.TBL_AUTHOR.NAME+" "+x.TBL_AUTHOR.SURNAME,
-               CATEGORY = x.TBL_CATEGORY.CATEGORY,
-               PUBLISHER = x.TBL_PUBLISHER.PUBLISHER,
-               YEAR = x.YEAR,
-               NUMBEROFPAGES = x.NUMBEROFPAGES,
-               STATUS = x.STATUS
-           }).ToList<BookViewModel>();
+            {
+                ID = x.ID,
+                BOOK = x.BOOK,
+                AUTHOR = x.TBL_AUTHOR.NAME + " " + x.TBL_AUTHOR.SURNAME,
+                CATEGORY = x.TBL_CATEGORY.CATEGORY,
+                PUBLISHER = x.TBL_PUBLISHER.PUBLISHER,
+                YEAR = x.YEAR,
+                NUMBEROFPAGES = x.NUMBEROFPAGES,
+                STATUS = x.STATUS
+            }).ToList<BookViewModel>();
         }
 
-        void Clear()
+        private void Clear()
         {
             TxtId.Text = "";
             TxtBook.Text = "";
@@ -101,7 +88,7 @@ namespace WPF_VisualProgrammingHW
         {
             int? BookId = (dg.SelectedItem as BookViewModel)?.ID;
             TxtId.Text = BookId.ToString();
-            TxtBook.Text= (dg.SelectedItem as BookViewModel)?.BOOK; //TxtBook.Text = _db.TBL_BOOK.Where(x => x.ID==BookId).Select(x=>x.BOOK).Single().ToString();
+            TxtBook.Text = (dg.SelectedItem as BookViewModel)?.BOOK; //TxtBook.Text = _db.TBL_BOOK.Where(x => x.ID==BookId).Select(x=>x.BOOK).Single().ToString();
             comboAuthor.Text = (dg.SelectedItem as BookViewModel)?.AUTHOR; //_db.TBL_BOOK.Where(x => x.ID==BookId).Select(x=>x.TBL_AUTHOR.NAME).Single().ToString();
             comboCategory.Text = (dg.SelectedItem as BookViewModel)?.CATEGORY;
             comboPublisher.Text = (dg.SelectedItem as BookViewModel)?.PUBLISHER;
@@ -119,7 +106,7 @@ namespace WPF_VisualProgrammingHW
             t.YEAR = txtYear.Text;
             t.NUMBEROFPAGES = txtPage.Text;
             t.STATUS = true;
-            
+
             _db.TBL_BOOK.Add(t);
             await _db.SaveChangesAsync();
             Read();

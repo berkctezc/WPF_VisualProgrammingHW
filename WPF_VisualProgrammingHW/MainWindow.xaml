@@ -9,19 +9,16 @@
         Closed="MainWindow_OnClosed">
     <Grid Margin="10,0,417,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*" />
+            <ColumnDefinition Width="0*" />
         </Grid.ColumnDefinitions>
-        <DockPanel>
-            <TextBox x:Name="txtUsername" 
-                     Margin="77,55,-317,0" TextWrapping="Wrap" Text="Please enter your username here" Grid.Column="1" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" GotKeyboardFocus="txtUsername_GotKeyboardFocus"/>
-            <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Username" Margin="84,0,-170,179" RenderTransformOrigin="0.943,0.595" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="86"/>
-            <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Password" Margin="78,85,-158,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="-0.056,2.744"/>
-            <PasswordBox x:Name="txtPass"
-                     Margin="78,120,-317,0" Grid.Column="1" Height="29" VerticalAlignment="Top" GotKeyboardFocus="txtPass_GotKeyboardFocus" Password="password"/>
-            <Image Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Left" Height="50" Margin="14,28,-65,0" VerticalAlignment="Top" Width="51" Source="_assets/user.png"/>
-            <Image Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Left" Height="50" Margin="13,102,-64,0" VerticalAlignment="Top" Width="51" Source="_assets/key.png"/>
-            <Button x:Name="loginButton" Grid.ColumnSpan="2" Grid.Column="0" Content="Login" HorizontalAlignment="Left" Margin="88,169,-233,0" VerticalAlignment="Top" Width="145" Height="43" Click="Button_Click"/>
-        </DockPanel>
+        <TextBox x:Name="txtUsername"
+                     Margin="77,55,-317,0" TextWrapping="Wrap" Text="Please enter your username here" Grid.Column="1" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" GotKeyboardFocus="txtUsername_GotKeyboardFocus" />
+        <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Username" Margin="80,0,-160,179" RenderTransformOrigin="0.943,0.595" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="80" />
+        <Label Grid.ColumnSpan="2" Grid.Column="0" Content="Password" Margin="76,96,-156,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="-0.056,2.744" />
+        <PasswordBox x:Name="txtPass" Margin="75,130,-314,0" Grid.Column="1" Height="29" VerticalAlignment="Top" GotKeyboardFocus="txtPass_GotKeyboardFocus" Password="password" />
+        <Image Margin="6,21,-70,144" Width="64" Source="_assets/user.png" Height="64" Grid.ColumnSpan="2" />
+        <Image Height="64" Width="64" Source="_assets/key.png" Grid.ColumnSpan="2" Margin="6,105,-70,60" />
+        <Button x:Name="loginButton" Grid.ColumnSpan="2" Grid.Column="0" Content="Login" HorizontalAlignment="Left" Margin="98,175,-223,0" VerticalAlignment="Top" Width="125" Height="40" Click="Button_Click" />
     </Grid>
 </Window>

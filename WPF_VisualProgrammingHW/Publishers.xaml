@@ -1,27 +1,27 @@
 ﻿<Page x:Class="WPF_VisualProgrammingHW.Publishers"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WPF_VisualProgrammingHW"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="480" d:DesignWidth="930"
       Title="Publishers" Loaded="Publishers_OnLoaded_OnLoaded">
 
     <Grid Background="AliceBlue">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="361*"/>
-            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="361*" />
+            <ColumnDefinition Width="104*" />
         </Grid.ColumnDefinitions>
         <GroupBox Header="Operations" FontSize="16" HorizontalAlignment="Left" Height="454" Margin="716,19,0,7" Width="192" Grid.ColumnSpan="2">
             <Grid Background="LightGray">
-                <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="7,45,143,351"/>
-                <TextBox x:Name="TxtId" TextWrapping="Wrap" Margin="48,51,48,349" IsEnabled="False"/>
-                <Label Content="Publisher" Height="34" VerticalAlignment="Top" Margin="5,78,94,0"/>
-                <TextBox x:Name="txtPublisher" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,111,4,0" RenderTransformOrigin="0.941,0.633"/>
-                <Button x:Name="btnCreate" Content="Create" Margin="40,324,40,72" Click="btnCreate_Click"/>
-                <Button x:Name="btnRead" Content="Refresh" Margin="40,359,40,37" Click="btnRead_Click"/>
-                <Button x:Name="btnUpdate" Content="Update" Margin="40,392,40,4" Click="btnUptd_Click"/>
+                <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="7,45,143,351" />
+                <TextBox x:Name="TxtId" TextWrapping="Wrap" Margin="48,51,48,349" IsEnabled="False" />
+                <Label Content="Publisher" Height="34" VerticalAlignment="Top" Margin="5,78,94,0" />
+                <TextBox x:Name="txtPublisher" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,111,4,0" RenderTransformOrigin="0.941,0.633" />
+                <Button x:Name="btnCreate" Content="Create" Margin="40,324,40,72" Click="btnCreate_Click" />
+                <Button x:Name="btnRead" Content="Refresh" Margin="40,359,40,37" Click="btnRead_Click" />
+                <Button x:Name="btnUpdate" Content="Update" Margin="40,392,40,4" Click="btnUptd_Click" />
             </Grid>
         </GroupBox>
 
@@ -30,18 +30,18 @@
                 AutoGenerateColumns="False"
                 ColumnWidth="*" SelectedCellsChanged="DataGrid_OnSelectedCellsChanged" x:Name="dg" x:FieldModifier="public" HorizontalAlignment="Left" Height="420" Margin="0,7,0,0" VerticalAlignment="Top" Width="680">
                 <DataGrid.Columns>
-                    <DataGridTextColumn FontWeight="Bold" Header="#" Binding="{Binding ID}"/>
-                    <DataGridTextColumn Header="Publisher" Binding="{Binding PUBLISHER}"/>
+                    <DataGridTextColumn FontWeight="Bold" Header="#" Binding="{Binding ID}" />
+                    <DataGridTextColumn Header="Publisher" Binding="{Binding PUBLISHER}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Action"/>
+                                <TextBlock Text="Action" />
                             </DataTemplate>
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_OnClick"/>
+                                    <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_OnClick" />
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

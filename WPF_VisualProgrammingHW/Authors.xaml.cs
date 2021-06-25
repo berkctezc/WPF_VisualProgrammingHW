@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Data;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Newtonsoft.Json;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPF_VisualProgrammingHW._data;
 
 namespace WPF_VisualProgrammingHW
@@ -35,8 +24,7 @@ namespace WPF_VisualProgrammingHW
             Read();
         }
 
-
-        void Read()
+        private void Read()
         {
             dg.ItemsSource = null;
             dg.ItemsSource = _db.TBL_AUTHOR.ToList();
