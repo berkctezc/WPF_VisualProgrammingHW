@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_HospitalManagementSystem.Views"
         mc:Ignorable="d"
-        Title="Library Management System" Height="550" Width="1063"
+        Title="Hospital Management System" Height="550" Width="1063"
         Closed="ContentWindow_OnClosed" ResizeMode="NoResize">
     <Grid Background="Azure" Margin="0,0,6,0" Height="533" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
