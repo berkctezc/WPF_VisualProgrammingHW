@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="_assets\bookshelf.png" />
+    <None Remove="_assets\categories.png" />
+    <None Remove="_assets\clear.png" />
+    <None Remove="_assets\key.png" />
+    <None Remove="_assets\publisher.png" />
+    <None Remove="_assets\user.png" />
+    <None Remove="_assets\writing.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="_assets\bookshelf.png" />
+    <Resource Include="_assets\categories.png" />
+    <Resource Include="_assets\clear.png" />
+    <Resource Include="_assets\key.png" />
+    <Resource Include="_assets\publisher.png" />
+    <Resource Include="_assets\user.png" />
+    <Resource Include="_assets\writing.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
+  </ItemGroup>
+
+</Project>
