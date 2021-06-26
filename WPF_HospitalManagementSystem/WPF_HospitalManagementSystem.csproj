@@ -9,23 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="_assets\bookshelf.png" />
-    <None Remove="_assets\categories.png" />
     <None Remove="_assets\clear.png" />
+    <None Remove="_assets\doctor.png" />
+    <None Remove="_assets\hospital.png" />
     <None Remove="_assets\key.png" />
-    <None Remove="_assets\publisher.png" />
+    <None Remove="_assets\nurse.png" />
     <None Remove="_assets\user.png" />
-    <None Remove="_assets\writing.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="App.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="_assets\clear.png" />
-    <Resource Include="_assets\key.png" />
-    <Resource Include="_assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +28,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="_assets\clear.png" />
+    <Resource Include="_assets\doctor.png" />
+    <Resource Include="_assets\hospital.png" />
+    <Resource Include="_assets\key.png" />
+    <Resource Include="_assets\nurse.png" />
+    <Resource Include="_assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
