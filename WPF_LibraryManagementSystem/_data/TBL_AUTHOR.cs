@@ -7,21 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_VisualProgrammingHW._data
+namespace WPF_LibraryManagementSystem._data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_CATEGORY
+    public partial class TBL_AUTHOR
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBL_CATEGORY()
+        public TBL_AUTHOR()
         {
             this.TBL_BOOK = new HashSet<TBL_BOOK>();
         }
     
         public int ID { get; set; }
-        public string CATEGORY { get; set; }
+        public string NAME { get; set; }
+        public string SURNAME { get; set; }
         public Nullable<bool> STATUS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

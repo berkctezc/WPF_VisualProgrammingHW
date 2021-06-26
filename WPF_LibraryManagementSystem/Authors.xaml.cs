@@ -3,9 +3,9 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using WPF_VisualProgrammingHW._data;
+using WPF_LibraryManagementSystem._data;
 
-namespace WPF_VisualProgrammingHW
+namespace WPF_LibraryManagementSystem
 {
     /// <summary>
     /// Interaction logic for Authors.xaml

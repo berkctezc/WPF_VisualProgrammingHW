@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace WPF_VisualProgrammingHW
+namespace WPF_LibraryManagementSystem
 {
     /// <summary>
     /// Interaction logic for ContentWindow.xaml

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_VisualProgrammingHW._data
+namespace WPF_LibraryManagementSystem._data
 {
     using System;
     using System.Data.Entity;

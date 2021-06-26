@@ -7,24 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_VisualProgrammingHW._data
+namespace WPF_LibraryManagementSystem._data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_BOOK
+    public partial class TBL_PUBLISHER
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_PUBLISHER()
+        {
+            this.TBL_BOOK = new HashSet<TBL_BOOK>();
+        }
+    
         public int ID { get; set; }
-        public string BOOK { get; set; }
-        public Nullable<int> AUTHOR { get; set; }
-        public Nullable<int> CATEGORY { get; set; }
-        public Nullable<int> PUBLISHER { get; set; }
-        public string YEAR { get; set; }
-        public string NUMBEROFPAGES { get; set; }
+        public string PUBLISHER { get; set; }
         public Nullable<bool> STATUS { get; set; }
     
-        public virtual TBL_AUTHOR TBL_AUTHOR { get; set; }
-        public virtual TBL_CATEGORY TBL_CATEGORY { get; set; }
-        public virtual TBL_PUBLISHER TBL_PUBLISHER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_BOOK> TBL_BOOK { get; set; }
     }
 }

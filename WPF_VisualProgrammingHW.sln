@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_VisualProgrammingHW", "WPF_VisualProgrammingHW\WPF_VisualProgrammingHW.csproj", "{CB5D822C-5923-40D1-A200-669FC84E0EDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF_HospitalManagementSystem", "WPF_HospitalManagementSystem\WPF_HospitalManagementSystem.csproj", "{7DC5E558-98F4-4230-A1AB-B26C0439B8C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_LibraryManagementSystem", "WPF_LibraryManagementSystem\WPF_LibraryManagementSystem.csproj", "{CB5D822C-5923-40D1-A200-669FC84E0EDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DC5E558-98F4-4230-A1AB-B26C0439B8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC5E558-98F4-4230-A1AB-B26C0439B8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC5E558-98F4-4230-A1AB-B26C0439B8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC5E558-98F4-4230-A1AB-B26C0439B8C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB5D822C-5923-40D1-A200-669FC84E0EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB5D822C-5923-40D1-A200-669FC84E0EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB5D822C-5923-40D1-A200-669FC84E0EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU

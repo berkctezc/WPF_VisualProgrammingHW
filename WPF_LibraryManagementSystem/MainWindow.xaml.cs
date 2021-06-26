@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using WPF_VisualProgrammingHW._data;
+using WPF_LibraryManagementSystem._data;
 
-namespace WPF_VisualProgrammingHW
+namespace WPF_LibraryManagementSystem
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

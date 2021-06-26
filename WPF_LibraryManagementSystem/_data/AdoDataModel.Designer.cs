@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\berkc\source\repos\WPF_VisualProgrammingHW\WPF_VisualProgrammingHW\_data\AdoDataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\berkc\source\repos\WPF_LibraryManagementSystem\WPF_LibraryManagementSystem\_data\AdoDataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

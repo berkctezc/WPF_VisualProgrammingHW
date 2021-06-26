@@ -7,16 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF_VisualProgrammingHW._data
+namespace WPF_LibraryManagementSystem._data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_ADMIN
+    public partial class TBL_CATEGORY
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBL_CATEGORY()
+        {
+            this.TBL_BOOK = new HashSet<TBL_BOOK>();
+        }
+    
         public int ID { get; set; }
-        public string USERNAME { get; set; }
-        public string PASSWORD { get; set; }
+        public string CATEGORY { get; set; }
         public Nullable<bool> STATUS { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBL_BOOK> TBL_BOOK { get; set; }
     }
 }
