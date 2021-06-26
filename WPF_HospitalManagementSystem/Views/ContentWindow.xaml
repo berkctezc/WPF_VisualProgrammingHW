@@ -1,0 +1,46 @@
+﻿<Window x:Class="WPF_HospitalManagementSystem.Views.ContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_HospitalManagementSystem.Views"
+        mc:Ignorable="d"
+        Title="Library Management System" Height="528" Width="1063"
+        Closed="ContentWindow_OnClosed" ResizeMode="NoResize">
+    <Grid Background="Azure" Margin="0,0,6,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button  Grid.Column="1" Margin="9,10,0,0" HorizontalAlignment="Left" Width="66" Height="86" VerticalAlignment="Top"
+                 Click="Branches_Click">
+            <StackPanel>
+                <Image Source="../_assets/hospital.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Branches" /></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button  Grid.Column="1" Margin="9,107,0,0" Height="85" VerticalAlignment="Top"
+                 Click="Doctors_Click" HorizontalAlignment="Left" Width="66">
+            <StackPanel>
+                <Image Source="../_assets/doctor.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Doctors" /></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button  Grid.Column="1" Margin="8,202,0,0" Height="85" VerticalAlignment="Top"
+                 Click="Nurses_Click" HorizontalAlignment="Left" Width="68">
+            <StackPanel>
+                <Image Source="../_assets/nurse.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Nurses" /></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button  Grid.Column="1" Margin="9,296,0,0" Height="86" VerticalAlignment="Top"
+                 Click="Clear_Click" HorizontalAlignment="Left" Width="66">
+            <StackPanel>
+                <Image Source="../_assets/clear.png" Width="65" />
+                <TextBlock TextAlignment="Center"><Run Text="Clear" /></TextBlock>
+            </StackPanel>
+        </Button>
+        <Frame
+            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Margin="104,12,0,19" Width="930" NavigationUIVisibility="Hidden" />
+    </Grid>
+</Window>

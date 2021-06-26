@@ -4,6 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,17 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="_assets\bookshelf.png" />
-    <Resource Include="_assets\categories.png" />
-    <Resource Include="_assets\clear.png" />
-    <Resource Include="_assets\key.png" />
-    <Resource Include="_assets\publisher.png" />
-    <Resource Include="_assets\user.png" />
-    <Resource Include="_assets\writing.png" />
+    <Page Remove="App.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="_data\" />
+    <Resource Include="_assets\clear.png" />
+    <Resource Include="_assets\key.png" />
+    <Resource Include="_assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +35,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
   </ItemGroup>
 
 </Project>
