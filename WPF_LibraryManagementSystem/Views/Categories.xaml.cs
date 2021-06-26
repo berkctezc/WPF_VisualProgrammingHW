@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using WPF_LibraryManagementSystem._data;
 
-namespace WPF_LibraryManagementSystem
+namespace WPF_LibraryManagementSystem.Views
 {
     /// <summary>
     /// Interaction logic for Categories.xaml

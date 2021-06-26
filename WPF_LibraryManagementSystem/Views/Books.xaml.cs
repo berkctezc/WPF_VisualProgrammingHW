@@ -3,8 +3,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WPF_LibraryManagementSystem._data;
+using WPF_LibraryManagementSystem.ViewModels;
 
-namespace WPF_LibraryManagementSystem
+namespace WPF_LibraryManagementSystem.Views
 {
     /// <summary>
     /// Interaction logic for Books.xaml
@@ -57,7 +58,7 @@ namespace WPF_LibraryManagementSystem
                 YEAR = x.YEAR,
                 NUMBEROFPAGES = x.NUMBEROFPAGES,
                 STATUS = x.STATUS
-            }).ToList<BookViewModel>();
+            }).ToList();
         }
 
         private void Clear()
@@ -72,24 +73,12 @@ namespace WPF_LibraryManagementSystem
             TxtBook.Focus();
         }
 
-        public class BookViewModel
-        {
-            public int ID { get; set; }
-            public string BOOK { get; set; }
-            public string AUTHOR { get; set; }
-            public string CATEGORY { get; set; }
-            public string PUBLISHER { get; set; }
-            public string YEAR { get; set; }
-            public string NUMBEROFPAGES { get; set; }
-            public Nullable<bool> STATUS { get; set; }
-        }
-
         private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             int? BookId = (dg.SelectedItem as BookViewModel)?.ID;
             TxtId.Text = BookId.ToString();
-            TxtBook.Text = (dg.SelectedItem as BookViewModel)?.BOOK; //TxtBook.Text = _db.TBL_BOOK.Where(x => x.ID==BookId).Select(x=>x.BOOK).Single().ToString();
-            comboAuthor.Text = (dg.SelectedItem as BookViewModel)?.AUTHOR; //_db.TBL_BOOK.Where(x => x.ID==BookId).Select(x=>x.TBL_AUTHOR.NAME).Single().ToString();
+            TxtBook.Text = (dg.SelectedItem as BookViewModel)?.BOOK;
+            comboAuthor.Text = (dg.SelectedItem as BookViewModel)?.AUTHOR;
             comboCategory.Text = (dg.SelectedItem as BookViewModel)?.CATEGORY;
             comboPublisher.Text = (dg.SelectedItem as BookViewModel)?.PUBLISHER;
             txtYear.Text = (dg.SelectedItem as BookViewModel)?.YEAR;

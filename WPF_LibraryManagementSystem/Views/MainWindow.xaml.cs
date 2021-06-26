@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using WPF_LibraryManagementSystem._data;
 
-namespace WPF_LibraryManagementSystem
+namespace WPF_LibraryManagementSystem.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace WPF_LibraryManagementSystem
+namespace WPF_LibraryManagementSystem.Views
 {
     /// <summary>
     /// Interaction logic for ContentWindow.xaml

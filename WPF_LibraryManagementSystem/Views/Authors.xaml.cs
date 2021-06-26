@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WPF_LibraryManagementSystem._data;
 
-namespace WPF_LibraryManagementSystem
+namespace WPF_LibraryManagementSystem.Views
 {
     /// <summary>
     /// Interaction logic for Authors.xaml
