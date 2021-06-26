@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_HospitalManagementSystem.Views"
         mc:Ignorable="d"
-        Title="Library Management System" Height="528" Width="1063"
+        Title="Library Management System" Height="550" Width="1063"
         Closed="ContentWindow_OnClosed" ResizeMode="NoResize">
-    <Grid Background="Azure" Margin="0,0,6,0">
+    <Grid Background="Azure" Margin="0,0,6,0" Height="533" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*" />
             <ColumnDefinition />
@@ -41,6 +41,6 @@
             </StackPanel>
         </Button>
         <Frame
-            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Margin="104,12,0,19" Width="930" NavigationUIVisibility="Hidden" />
+            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Margin="104,12,0,0" Width="930" NavigationUIVisibility="Hidden" Height="480" VerticalAlignment="Top" />
     </Grid>
 </Window>

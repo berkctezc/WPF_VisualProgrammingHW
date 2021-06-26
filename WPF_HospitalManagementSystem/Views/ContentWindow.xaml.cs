@@ -24,37 +24,29 @@ namespace WPF_HospitalManagementSystem.Views
             InitializeComponent();
         }
 
-        //private Authors _authorsWindow;
-        //private Books _booksWindow;
-        //private Categories _categoriesWindow;
-        //private Publishers _publishersWindow;
+        private Branches _branchesWindow;
+        private Doctors _doctorsWindow;
+        private Nurses _nursesWindow;
 
         private void Branches_Click(object sender, RoutedEventArgs e)
         {
-            //_authorsWindow = new Authors();
-            //MyFrame.Content = null;
-            //MyFrame.Content = _authorsWindow;
+            _branchesWindow = new Branches();
+            MyFrame.Content = null;
+            MyFrame.Content = _branchesWindow;
         }
 
         private void Doctors_Click(object sender, RoutedEventArgs e)
         {
-            //_booksWindow = new Books();
-            //MyFrame.Content = null;
-            //MyFrame.Content = _booksWindow;
+            _doctorsWindow = new Doctors();
+            MyFrame.Content = null;
+            MyFrame.Content = _doctorsWindow;
         }
 
         private void Nurses_Click(object sender, RoutedEventArgs e)
         {
-            //_categoriesWindow = new Categories();
-            //MyFrame.Content = null;
-            //MyFrame.Content = _categoriesWindow;
-        }
-
-        private void Publishers_Click(object sender, RoutedEventArgs e)
-        {
-            //_publishersWindow = new Publishers();
-            //MyFrame.Content = null;
-            //MyFrame.Content = _publishersWindow;
+            _nursesWindow = new Nurses();
+            MyFrame.Content = null;
+            MyFrame.Content = _nursesWindow;
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e) => MyFrame.Content = null;
