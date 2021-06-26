@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_LibraryManagementSystem"
         mc:Ignorable="d"
-        Title="Login Screen" Height="258" Width="353.333" FontSize="16" ResizeMode="NoResize"
+        Title="Login Screen" 
+        Height="260" 
+        Width="360" 
+        FontSize="16" 
+        ResizeMode="NoResize"
         Closed="MainWindow_OnClosed">
     <Grid Margin="10,0,417,0">
         <Grid.ColumnDefinitions>
