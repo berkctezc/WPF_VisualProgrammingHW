@@ -10,10 +10,7 @@ namespace WPF_LibraryManagementSystem.Views
     /// </summary>
     public partial class Categories : Page
     {
-        public Categories()
-        {
-            InitializeComponent();
-        }
+        public Categories() => InitializeComponent();
 
         private DbLibrarySystemEntities _db = new DbLibrarySystemEntities();
 
@@ -30,14 +27,6 @@ namespace WPF_LibraryManagementSystem.Views
             Read();
         }
 
-        private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
-        {
-            int categoryId = (dg.SelectedItem as TBL_CATEGORY).ID;
-            var categoryToDelete = _db.TBL_CATEGORY.Single(a => a.ID == categoryId);
-            _db.TBL_CATEGORY.Remove(categoryToDelete);
-            await _db.SaveChangesAsync();
-            Read();
-        }
 
         private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
@@ -45,31 +34,39 @@ namespace WPF_LibraryManagementSystem.Views
             txtCategory.Text = (dg.SelectedItem as TBL_CATEGORY)?.CATEGORY;
         }
 
-        private void btnRead_Click(object sender, RoutedEventArgs e)
-        {
-            Read();
-        }
-
-        private async void btnUptd_Click(object sender, RoutedEventArgs e)
-        {
-            int categoryId = (dg.SelectedItem as TBL_CATEGORY).ID;
-
-            TBL_CATEGORY categoryToUpdate = (from a in _db.TBL_CATEGORY where a.ID == categoryId select a).Single();
-            categoryToUpdate.CATEGORY = txtCategory.Text;
-
-            await _db.SaveChangesAsync();
-            Read();
-        }
-
-        private void Categories_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            Read();
-        }
+        private void btnRead_Click(object sender, RoutedEventArgs e) => Read();
+        private void Categories_OnLoaded(object sender, RoutedEventArgs e) => Read();
 
         private void Read()
         {
             dg.ItemsSource = null;
             dg.ItemsSource = _db.TBL_CATEGORY.ToList();
         }
+
+        private async void btnUptd_Click(object sender, RoutedEventArgs e)
+        {
+            int? categoryId = (dg.SelectedItem as TBL_CATEGORY)?.ID;
+
+            if (categoryId != null)
+            {
+                TBL_CATEGORY categoryToUpdate = (from a in _db.TBL_CATEGORY where a.ID == categoryId select a).Single();
+                categoryToUpdate.CATEGORY = txtCategory.Text;
+
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
+        }
+        private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            int? categoryId = (dg.SelectedItem as TBL_CATEGORY)?.ID;
+            if (categoryId != null)
+            {
+                TBL_CATEGORY categoryToDelete = _db.TBL_CATEGORY.Single(a => a.ID == categoryId);
+                _db.TBL_CATEGORY.Remove(categoryToDelete);
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
+        }
+
     }
 }

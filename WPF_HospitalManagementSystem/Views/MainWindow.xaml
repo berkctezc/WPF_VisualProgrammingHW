@@ -20,7 +20,7 @@
         <PasswordBox x:Name="txtPass" Margin="16,0,-251,85" GotKeyboardFocus="txtPass_GotKeyboardFocus" Password="password" Grid.ColumnSpan="2"
                      Grid.Column="0" Height="22" VerticalAlignment="Bottom" />
         <Image Margin="44,27,-95,0" Source="../_assets/user.png" Grid.ColumnSpan="2" RenderTransformOrigin="0.608,0.253" Height="62" VerticalAlignment="Top" />
-        <Image Source="../_assets/key.png" Grid.ColumnSpan="2" Grid.Column="0" Margin="130,27,-171,0" RenderTransformOrigin="0.5,0.5" Height="55" VerticalAlignment="Top" >
+        <Image Source="../_assets/key.png" Grid.ColumnSpan="2" Grid.Column="0" Margin="132,36,-173,0" RenderTransformOrigin="0.5,0.5" Height="55" VerticalAlignment="Top" >
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

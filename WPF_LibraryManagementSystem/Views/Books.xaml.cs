@@ -101,34 +101,36 @@ namespace WPF_LibraryManagementSystem.Views
             Read();
         }
 
-        private void btnRead_Click(object sender, RoutedEventArgs e)
-        {
-            Read();
-        }
+        private void btnRead_Click(object sender, RoutedEventArgs e) => Read();
 
         private async void btnUptd_Click(object sender, RoutedEventArgs e)
         {
-            int bookId = (dg.SelectedItem as BookViewModel).ID;
+            int? bookId = (dg.SelectedItem as BookViewModel)?.ID;
+            if (bookId != null)
+            {
+                TBL_BOOK bookToUpdate = (from a in _db.TBL_BOOK where a.ID == bookId select a).Single();
+                bookToUpdate.BOOK = TxtBook.Text;
+                bookToUpdate.AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString());
+                bookToUpdate.CATEGORY = int.Parse(comboCategory.SelectedValue.ToString());
+                bookToUpdate.PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString());
+                bookToUpdate.YEAR = txtYear.Text;
+                bookToUpdate.NUMBEROFPAGES = txtPage.Text;
 
-            TBL_BOOK bookToUpdate = (from a in _db.TBL_BOOK where a.ID == bookId select a).Single();
-            bookToUpdate.BOOK = TxtBook.Text;
-            bookToUpdate.AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString());
-            bookToUpdate.CATEGORY = int.Parse(comboCategory.SelectedValue.ToString());
-            bookToUpdate.PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString());
-            bookToUpdate.YEAR = txtYear.Text;
-            bookToUpdate.NUMBEROFPAGES = txtPage.Text;
-
-            await _db.SaveChangesAsync();
-            Read();
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
         }
 
         private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            int bookId = (dg.SelectedItem as BookViewModel).ID;
-            var bookToDelete = _db.TBL_BOOK.Single(a => a.ID == bookId);
-            _db.TBL_BOOK.Remove(bookToDelete);
-            await _db.SaveChangesAsync();
-            Read();
+            int? bookId = (dg.SelectedItem as BookViewModel)?.ID;
+            if (bookId != null)
+            {
+                TBL_BOOK bookToDelete = _db.TBL_BOOK.Single(a => a.ID == bookId);
+                _db.TBL_BOOK.Remove(bookToDelete);
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
         }
     }
 }

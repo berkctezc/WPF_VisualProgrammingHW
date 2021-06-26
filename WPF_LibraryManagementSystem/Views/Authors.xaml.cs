@@ -46,7 +46,7 @@ namespace WPF_LibraryManagementSystem.Views
             };
 
             _db.TBL_AUTHOR.Add(newAuthor);
-            await _db.SaveChangesAsync();
+            _ = await _db.SaveChangesAsync();
             Read();
         }
 
@@ -57,23 +57,29 @@ namespace WPF_LibraryManagementSystem.Views
 
         private async void btnUptd_Click(object sender, RoutedEventArgs e)
         {
-            int authorId = (dg.SelectedItem as TBL_AUTHOR).ID;
+            int? authorId = (dg.SelectedItem as TBL_AUTHOR)?.ID;
+            if (authorId!=null)
+            {
+                TBL_AUTHOR authorToUpdate = (from a in _db.TBL_AUTHOR where a.ID == authorId select a).Single();
+                authorToUpdate.NAME = txtName.Text;
+                authorToUpdate.SURNAME = txtSurname.Text;
 
-            TBL_AUTHOR authorToUpdate = (from a in _db.TBL_AUTHOR where a.ID == authorId select a).Single();
-            authorToUpdate.NAME = txtName.Text;
-            authorToUpdate.SURNAME = txtSurname.Text;
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
 
-            await _db.SaveChangesAsync();
-            Read();
         }
 
         private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            int authorId = (dg.SelectedItem as TBL_AUTHOR).ID;
-            var authorToDelete = _db.TBL_AUTHOR.Single(a => a.ID == authorId);
-            _db.TBL_AUTHOR.Remove(authorToDelete);
-            await _db.SaveChangesAsync();
-            Read();
+            int? authorId = (dg.SelectedItem as TBL_AUTHOR)?.ID;
+            if (authorId != null)
+            {
+                TBL_AUTHOR authorToDelete = _db.TBL_AUTHOR.Single(a => a.ID == authorId);
+                _db.TBL_AUTHOR.Remove(authorToDelete);
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
         }
     }
 }

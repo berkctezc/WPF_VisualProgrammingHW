@@ -11,10 +11,7 @@ namespace WPF_LibraryManagementSystem.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        public MainWindow() => InitializeComponent();
 
         private DbLibrarySystemEntities _db = new DbLibrarySystemEntities();
 
@@ -48,9 +45,6 @@ namespace WPF_LibraryManagementSystem.Views
                 txtPass.Password = "";
         }
 
-        private void MainWindow_OnClosed(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
+        private void MainWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
     }
 }

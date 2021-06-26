@@ -10,10 +10,7 @@ namespace WPF_LibraryManagementSystem.Views
     /// </summary>
     public partial class Publishers : Page
     {
-        public Publishers()
-        {
-            InitializeComponent();
-        }
+        public Publishers() => InitializeComponent();
 
         private DbLibrarySystemEntities _db = new DbLibrarySystemEntities();
 
@@ -33,34 +30,37 @@ namespace WPF_LibraryManagementSystem.Views
                 STATUS = true
             };
 
-            _db.TBL_PUBLISHER.Add(newPublisher);
-            await _db.SaveChangesAsync();
+            _ = _db.TBL_PUBLISHER.Add(newPublisher);
+            _ = await _db.SaveChangesAsync();
             Read();
         }
 
-        private void btnRead_Click(object sender, RoutedEventArgs e)
-        {
-            Read();
-        }
+        private void btnRead_Click(object sender, RoutedEventArgs e) => Read();
 
         private async void btnUptd_Click(object sender, RoutedEventArgs e)
         {
-            int publisherId = (dg.SelectedItem as TBL_PUBLISHER).ID;
+            int? publisherId = (dg.SelectedItem as TBL_PUBLISHER)?.ID;
 
-            TBL_PUBLISHER publisherToUpdate = (from a in _db.TBL_PUBLISHER where a.ID == publisherId select a).Single();
-            publisherToUpdate.PUBLISHER = txtPublisher.Text;
+            if (publisherId != null)
+            {
+                TBL_PUBLISHER publisherToUpdate = (from a in _db.TBL_PUBLISHER where a.ID == publisherId select a).Single();
+                publisherToUpdate.PUBLISHER = txtPublisher.Text;
 
-            await _db.SaveChangesAsync();
-            Read();
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
         }
 
         private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            int publisherId = (dg.SelectedItem as TBL_PUBLISHER).ID;
-            var publisherToDel = _db.TBL_PUBLISHER.Single(a => a.ID == publisherId);
-            _db.TBL_PUBLISHER.Remove(publisherToDel);
-            await _db.SaveChangesAsync();
-            Read();
+            int? publisherId = (dg.SelectedItem as TBL_PUBLISHER)?.ID;
+            if (publisherId != null)
+            {
+                TBL_PUBLISHER publisherToDel = _db.TBL_PUBLISHER.Single(a => a.ID == publisherId);
+                _db.TBL_PUBLISHER.Remove(publisherToDel);
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
         }
 
         private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
