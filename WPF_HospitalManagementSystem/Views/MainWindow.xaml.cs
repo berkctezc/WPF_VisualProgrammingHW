@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPF_HospitalManagementSystem._data;
 
-namespace WPF_HospitalManagementSystem
+namespace WPF_HospitalManagementSystem.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,6 +17,7 @@ namespace WPF_HospitalManagementSystem
         }
 
         private DbHospitalManagementSystemContext _db = new DbHospitalManagementSystemContext();
+        private ContentWindow contentWindow;
 
         private void MainWindow_OnClosed(object? sender, EventArgs e)
         {
@@ -53,14 +44,14 @@ namespace WPF_HospitalManagementSystem
 
             if (query.Any())
             {
-                MessageBox.Show("scs", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                // ContentWindow contentWindow = new ContentWindow();
-                //contentWindow.Show();
+                MessageBox.Show("Successfully Logged in", "Login Successful", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                contentWindow = new ContentWindow();
+                contentWindow.Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Invalid Username or Password, Please Try Again", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Invalid Username or Password", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
