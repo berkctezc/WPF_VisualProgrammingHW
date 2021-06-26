@@ -29,7 +29,7 @@
         </GroupBox>
 
         <GroupBox Grid.Column="0" Header="Authors" FontSize="16" HorizontalAlignment="Left" Height="459" Margin="11,10,0,0" VerticalAlignment="Top" Width="695">
-            <DataGrid AlternatingRowBackground="Tan" RowBackground="Aquamarine"
+            <DataGrid AlternatingRowBackground="Tan" RowBackground="Aquamarine" IsReadOnly="True"
                 AutoGenerateColumns="False"
                 ColumnWidth="*" SelectedCellsChanged="DataGrid_OnSelectedCellsChanged" x:Name="dg" x:FieldModifier="public" HorizontalAlignment="Left" Height="420" Margin="0,7,0,0" VerticalAlignment="Top" Width="680">
                 <DataGrid.Columns>
