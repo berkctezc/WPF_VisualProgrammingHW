@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
 
 namespace WPF_HospitalManagementSystem._data
 {

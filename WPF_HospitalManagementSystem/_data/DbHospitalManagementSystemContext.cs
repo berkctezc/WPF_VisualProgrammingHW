@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+
+#nullable disable
 
 namespace WPF_HospitalManagementSystem._data
 {
@@ -22,6 +26,7 @@ namespace WPF_HospitalManagementSystem._data
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("data source=(localdb)\\mssqllocaldb;database=DbHospitalManagementSystem; user Id=sa; password=123456");
             }
         }
@@ -106,7 +111,7 @@ namespace WPF_HospitalManagementSystem._data
                 entity.HasOne(d => d.BranchNavigation)
                     .WithMany(p => p.TblDoctors)
                     .HasForeignKey(d => d.Branch)
-                    .HasConstraintName("FK_TBL_DOCTOR_TBL_BRANCH");
+                    .HasConstraintName("FK_TBL_DOCTOR_TBL_BRANCH1");
             });
 
             modelBuilder.Entity<TblNurse>(entity =>
@@ -138,7 +143,7 @@ namespace WPF_HospitalManagementSystem._data
                 entity.HasOne(d => d.PoliclinicNavigation)
                     .WithMany(p => p.TblNurses)
                     .HasForeignKey(d => d.Policlinic)
-                    .HasConstraintName("FK_TBL_NURSES_TBL_BRANCH");
+                    .HasConstraintName("FK_TBL_NURSES_TBL_BRANCH1");
             });
 
             OnModelCreatingPartial(modelBuilder);
