@@ -77,7 +77,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_OnClick" />
+                                    <Button x:Name="btnDelete" Content="Delete" Background="Red" Foreground="White" Click="BtnDelete_OnClick" />
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
