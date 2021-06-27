@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
-          d:DesignHeight="480" d:DesignWidth="930"
-      Title="Authors"
+      d:DesignHeight="480" d:DesignWidth="930"
+      Title="Branches"
       Background="White"
       Loaded="Branches_Load">
 
@@ -20,9 +20,32 @@
                 <TextBox x:Name="txtId" Height="30" TextWrapping="Wrap" Margin="60,9,24,387" IsEnabled="False" />
                 <Label Content="Branch Name" Height="32" VerticalAlignment="Top" Margin="4,39,59,0" />
                 <TextBox x:Name="txtBranch" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,74,4,0" RenderTransformOrigin="0.941,0.633" />
-                <Button x:Name="btnCreate" Content="Create" Margin="40,298,40,89" Click="btnCreate_Click" />
-                <Button x:Name="btnRead" Content="Refresh" Margin="40,341,40,46" Click="btnRead_Click" />
-                <Button x:Name="btnUpdate" Content="Update" Margin="40,383,40,4" Click="btnUptd_Click" />
+                <Button x:Name="btnCreate" Content="Create" Margin="4,382,122,6" Click="btnCreate_Click" Width="52" Height="36" BorderBrush="#FF39D30B" Foreground="White" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF688B5B"/>
+                            <GradientStop Color="#FF329B0B" Offset="0.91"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnRead" Content="Refresh" Margin="61,382,63,6" Click="btnRead_Click" Height="36" Width="56" Foreground="White" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF180B99"/>
+                            <GradientStop Color="#FF4899EA" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnUpdate" Content="Update" Margin="120,382,4,7" Click="btnUptd_Click" Height="36" BorderBrush="{x:Null}" Foreground="White" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF3C3C0D"/>
+                            <GradientStop Color="#FFC1C108" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Label Content="Search" Height="30" VerticalAlignment="Top" Margin="4,317,118,0" />
+                <TextBox x:Name="txtSearch" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Margin="7,350,5,0" RenderTransformOrigin="0.941,0.633" TextChanged="txtSearch_TextChanged" />
             </Grid>
         </GroupBox>
 

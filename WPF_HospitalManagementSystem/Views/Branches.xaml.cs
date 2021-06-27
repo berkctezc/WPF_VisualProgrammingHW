@@ -75,5 +75,11 @@ namespace WPF_HospitalManagementSystem.Views
                 Read();
             }
         }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Read();
+            dg.ItemsSource = _db.TblBranches.Where(x => x.Branch.Contains(txtSearch.Text)).ToList();
+        }
     }
 }
