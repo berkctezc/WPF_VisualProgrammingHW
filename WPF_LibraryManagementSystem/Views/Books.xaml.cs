@@ -16,30 +16,7 @@ namespace WPF_LibraryManagementSystem.Views
 
         private DbLibrarySystemEntities _db = new DbLibrarySystemEntities();
 
-        private void Books_Load(object sender, EventArgs e)
-        {
-            Read();
-            comboAuthor.ItemsSource = (from x in _db.TBL_AUTHOR
-                                       select new
-                                       {
-                                           x.ID,
-                                           AUTHOR = x.NAME + " " + x.SURNAME,
-                                       }).ToList();
-
-            comboCategory.ItemsSource = (from x in _db.TBL_CATEGORY
-                                         select new
-                                         {
-                                             x.ID,
-                                             x.CATEGORY
-                                         }).ToList();
-
-            comboPublisher.ItemsSource = (from x in _db.TBL_PUBLISHER
-                                          select new
-                                          {
-                                              x.ID,
-                                              x.PUBLISHER
-                                          }).ToList();
-        }
+        private void Books_Load(object sender, EventArgs e) => Read();
 
         private void Read()
         {
@@ -56,6 +33,27 @@ namespace WPF_LibraryManagementSystem.Views
                 NUMBEROFPAGES = x.NUMBEROFPAGES,
                 STATUS = x.STATUS
             }).ToList();
+
+            comboAuthor.ItemsSource = (from x in _db.TBL_AUTHOR
+                select new
+                {
+                    x.ID,
+                    AUTHOR = x.NAME + " " + x.SURNAME,
+                }).ToList();
+
+            comboCategory.ItemsSource = (from x in _db.TBL_CATEGORY
+                select new
+                {
+                    x.ID,
+                    x.CATEGORY
+                }).ToList();
+
+            comboPublisher.ItemsSource = (from x in _db.TBL_PUBLISHER
+                select new
+                {
+                    x.ID,
+                    x.PUBLISHER
+                }).ToList();
         }
 
         private void Clear()
