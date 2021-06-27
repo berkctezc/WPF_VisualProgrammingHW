@@ -32,7 +32,7 @@
                 <TextBox x:Name="txtId" Height="30" TextWrapping="Wrap" Margin="60,9,24,0" IsEnabled="False" VerticalAlignment="Top" />
                 <Label Content="Name" Height="32" VerticalAlignment="Top" Margin="4,32,120,0" />
                 <TextBox x:Name="txtName" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,58,4,0" RenderTransformOrigin="0.941,0.633" />
-                <Label Content="Surname" Height="32" VerticalAlignment="Top" Margin="4,84,64,0" />
+                <Label Content="Surname" Height="32" VerticalAlignment="Top" Margin="4,84,102,0" />
                 <TextBox x:Name="txtSurname" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,111,4,0" RenderTransformOrigin="0.941,0.633" />
                 <Label Content="Branch" Height="28" VerticalAlignment="Top" Margin="4,136,116,0" />
                 <ComboBox x:Name="comboBranch" DisplayMemberPath="Branch" SelectedValuePath="ID" Margin="4,165,4,0" VerticalAlignment="Top" />

@@ -24,7 +24,17 @@ namespace WPF_HospitalManagementSystem.Views
     {
         public Doctors() => InitializeComponent();
 
-        private DbHospitalManagementSystemContext _db = new();
+        private static DbHospitalManagementSystemContext _db = new();
+
+        IQueryable<DoctorViewModel> initialData = _db.TblDoctors.Select(x => new DoctorViewModel()
+        {
+            Id = x.Id,
+            Name = x.Name,
+            Surname = x.Surname,
+            Branch = x.BranchNavigation.Branch,
+            Birthofdate = x.Birthofdate,
+            Status = x.Status
+        });
 
         private void Doctors_Load(object sender, RoutedEventArgs e) => Read();
 
@@ -42,15 +52,7 @@ namespace WPF_HospitalManagementSystem.Views
         {
             dg.ItemsSource = null;
 
-            dg.ItemsSource = _db.TblDoctors.Select(x => new DoctorViewModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Surname = x.Surname,
-                Branch = x.BranchNavigation.Branch,
-                Birthofdate = x.Birthofdate,
-                Status = x.Status
-            }).ToList();
+            dg.ItemsSource = initialData.ToList();
 
             comboBranch.ItemsSource = (from x in _db.TblBranches
                                        select new
@@ -60,7 +62,7 @@ namespace WPF_HospitalManagementSystem.Views
                                        }).ToList();
         }
 
-      private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             int? docId = (dg.SelectedItem as DoctorViewModel)?.Id;
             txtId.Text = docId.ToString();
@@ -76,7 +78,7 @@ namespace WPF_HospitalManagementSystem.Views
             {
                 Name = txtName.Text,
                 Surname = txtName.Text,
-                Branch = _db.TblBranches.Single(x=>x.Branch == comboBranch.Text).Id,
+                Branch = _db.TblBranches.Single(x => x.Branch == comboBranch.Text).Id,
                 Birthofdate = dateBirth.SelectedDate,
                 Status = true
             };
@@ -89,21 +91,45 @@ namespace WPF_HospitalManagementSystem.Views
 
         private void btnRead_Click(object sender, RoutedEventArgs e) => Read();
 
-        private void btnUptd_Click(object sender, RoutedEventArgs e)
+        private async void btnUptd_Click(object sender, RoutedEventArgs e)
         {
-            //
+            int? docId = (dg.SelectedItem as DoctorViewModel)?.Id;
+            if (docId != null)
+            {
+                TblDoctor docToUpdate = (from a in _db.TblDoctors where a.Id == docId select a).Single();
+                docToUpdate.Name = txtName.Text;
+                docToUpdate.Surname = txtSurname.Text;
+                docToUpdate.Birthofdate = dateBirth.SelectedDate;
+                docToUpdate.Branch = _db.TblBranches.Single(x => x.Branch == comboBranch.Text).Id;
+
+                _ = await _db.SaveChangesAsync();
+                Clear();
+                Read();
+            }
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //
+
+            dg.ItemsSource = initialData
+                .Where(x =>
+                    x.Name.Contains(txtSearch.Text) ||
+                    x.Surname.Contains(txtSearch.Text) ||
+                    x.Branch.Contains(txtSearch.Text)
+                ).ToList();
         }
 
-  
-
-        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            //
+            int? docId = (dg.SelectedItem as DoctorViewModel)?.Id;
+            if (docId != null)
+            {
+                TblDoctor docToDel = _db.TblDoctors.Single(a => a.Id == docId);
+                _db.TblDoctors.Remove(docToDel);
+                _ = await _db.SaveChangesAsync();
+                Clear();
+                Read();
+            }
         }
     }
 }
