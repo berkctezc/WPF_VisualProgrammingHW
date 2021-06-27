@@ -35,25 +35,25 @@ namespace WPF_LibraryManagementSystem.Views
             }).ToList();
 
             comboAuthor.ItemsSource = (from x in _db.TBL_AUTHOR
-                select new
-                {
-                    x.ID,
-                    AUTHOR = x.NAME + " " + x.SURNAME,
-                }).ToList();
+                                       select new
+                                       {
+                                           x.ID,
+                                           AUTHOR = x.NAME + " " + x.SURNAME,
+                                       }).ToList();
 
             comboCategory.ItemsSource = (from x in _db.TBL_CATEGORY
-                select new
-                {
-                    x.ID,
-                    x.CATEGORY
-                }).ToList();
+                                         select new
+                                         {
+                                             x.ID,
+                                             x.CATEGORY
+                                         }).ToList();
 
             comboPublisher.ItemsSource = (from x in _db.TBL_PUBLISHER
-                select new
-                {
-                    x.ID,
-                    x.PUBLISHER
-                }).ToList();
+                                          select new
+                                          {
+                                              x.ID,
+                                              x.PUBLISHER
+                                          }).ToList();
         }
 
         private void Clear()

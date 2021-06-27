@@ -27,7 +27,6 @@ namespace WPF_LibraryManagementSystem.Views
             Read();
         }
 
-
         private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             TxtId.Text = (dg.SelectedItem as TBL_CATEGORY)?.ID.ToString();
@@ -35,6 +34,7 @@ namespace WPF_LibraryManagementSystem.Views
         }
 
         private void btnRead_Click(object sender, RoutedEventArgs e) => Read();
+
         private void Categories_OnLoaded(object sender, RoutedEventArgs e) => Read();
 
         private void Read()
@@ -56,6 +56,7 @@ namespace WPF_LibraryManagementSystem.Views
                 Read();
             }
         }
+
         private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
             int? categoryId = (dg.SelectedItem as TBL_CATEGORY)?.ID;
@@ -67,6 +68,5 @@ namespace WPF_LibraryManagementSystem.Views
                 Read();
             }
         }
-
     }
 }

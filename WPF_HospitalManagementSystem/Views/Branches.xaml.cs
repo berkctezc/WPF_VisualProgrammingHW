@@ -15,6 +15,7 @@ namespace WPF_HospitalManagementSystem.Views
         {
             InitializeComponent();
         }
+
         private DbHospitalManagementSystemContext _db = new();
 
         private void Branches_Load(object sender, EventArgs e)
@@ -71,7 +72,8 @@ namespace WPF_HospitalManagementSystem.Views
         private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
             int? branchId = (dg.SelectedItem as TblBranch)?.Id;
-            if (branchId!=null){
+            if (branchId != null)
+            {
                 TblBranch branchToDelete = _db.TblBranches.Single(a => a.Id == branchId);
                 _db.TblBranches.Remove(branchToDelete);
                 _ = await _db.SaveChangesAsync();

@@ -58,7 +58,7 @@ namespace WPF_LibraryManagementSystem.Views
         private async void btnUptd_Click(object sender, RoutedEventArgs e)
         {
             int? authorId = (dg.SelectedItem as TBL_AUTHOR)?.ID;
-            if (authorId!=null)
+            if (authorId != null)
             {
                 TBL_AUTHOR authorToUpdate = (from a in _db.TBL_AUTHOR where a.ID == authorId select a).Single();
                 authorToUpdate.NAME = txtName.Text;
@@ -67,7 +67,6 @@ namespace WPF_LibraryManagementSystem.Views
                 _ = await _db.SaveChangesAsync();
                 Read();
             }
-
         }
 
         private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
