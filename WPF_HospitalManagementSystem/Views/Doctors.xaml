@@ -35,7 +35,7 @@
                 <Label Content="Surname" Height="32" VerticalAlignment="Top" Margin="4,84,102,0" />
                 <TextBox x:Name="txtSurname" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,111,4,0" RenderTransformOrigin="0.941,0.633" />
                 <Label Content="Branch" Height="28" VerticalAlignment="Top" Margin="4,136,116,0" />
-                <ComboBox x:Name="comboBranch" DisplayMemberPath="Branch" SelectedValuePath="ID" Margin="4,165,4,0" VerticalAlignment="Top" />
+                <ComboBox x:Name="comboBranch" DisplayMemberPath="Branch" SelectedValuePath="Id" Margin="4,165,4,0" VerticalAlignment="Top" />
                 <Label Content="Birthdate" Height="28" VerticalAlignment="Top" Margin="4,188,98,0" />
                 <DatePicker x:Name="dateBirth" Margin="6,216,6,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" IsTodayHighlighted="True" SelectedDateFormat="Long" FontSize="12" Text="Date of birth" Cursor="Pen" AllowDrop="True"/>
                 <TextBox x:Name="txtSearch" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Margin="7,350,5,0" RenderTransformOrigin="0.941,0.633" TextChanged="txtSearch_TextChanged" />
