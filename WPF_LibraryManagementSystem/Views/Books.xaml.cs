@@ -12,10 +12,7 @@ namespace WPF_LibraryManagementSystem.Views
     /// </summary>
     public partial class Books : Page
     {
-        public Books()
-        {
-            InitializeComponent();
-        }
+        public Books() => InitializeComponent();
 
         private DbLibrarySystemEntities _db = new DbLibrarySystemEntities();
 
@@ -75,8 +72,8 @@ namespace WPF_LibraryManagementSystem.Views
 
         private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            int? BookId = (dg.SelectedItem as BookViewModel)?.ID;
-            TxtId.Text = BookId.ToString();
+            int? bookId = (dg.SelectedItem as BookViewModel)?.ID;
+            TxtId.Text = bookId.ToString();
             TxtBook.Text = (dg.SelectedItem as BookViewModel)?.BOOK;
             comboAuthor.Text = (dg.SelectedItem as BookViewModel)?.AUTHOR;
             comboCategory.Text = (dg.SelectedItem as BookViewModel)?.CATEGORY;
@@ -87,17 +84,20 @@ namespace WPF_LibraryManagementSystem.Views
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            TBL_BOOK t = new TBL_BOOK();
-            t.BOOK = TxtBook.Text;
-            t.AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString());
-            t.CATEGORY = int.Parse(comboCategory.SelectedValue.ToString());
-            t.PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString());
-            t.YEAR = txtYear.Text;
-            t.NUMBEROFPAGES = txtPage.Text;
-            t.STATUS = true;
+            TBL_BOOK t = new TBL_BOOK
+            {
+                BOOK = TxtBook.Text,
+                AUTHOR = int.Parse(comboAuthor.SelectedValue.ToString()),
+                CATEGORY = int.Parse(comboCategory.SelectedValue.ToString()),
+                PUBLISHER = int.Parse(comboPublisher.SelectedValue.ToString()),
+                YEAR = txtYear.Text,
+                NUMBEROFPAGES = txtPage.Text,
+                STATUS = true
+            };
 
             _db.TBL_BOOK.Add(t);
-            await _db.SaveChangesAsync();
+            _ = await _db.SaveChangesAsync();
+            Clear();
             Read();
         }
 
@@ -117,6 +117,7 @@ namespace WPF_LibraryManagementSystem.Views
                 bookToUpdate.NUMBEROFPAGES = txtPage.Text;
 
                 _ = await _db.SaveChangesAsync();
+                Clear();
                 Read();
             }
         }
@@ -129,6 +130,7 @@ namespace WPF_LibraryManagementSystem.Views
                 TBL_BOOK bookToDelete = _db.TBL_BOOK.Single(a => a.ID == bookId);
                 _db.TBL_BOOK.Remove(bookToDelete);
                 _ = await _db.SaveChangesAsync();
+                Clear();
                 Read();
             }
         }

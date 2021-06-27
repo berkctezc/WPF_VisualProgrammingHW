@@ -11,10 +11,10 @@ namespace WPF_HospitalManagementSystem.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()=>InitializeComponent();
+        public MainWindow() => InitializeComponent();
 
-        private DbHospitalManagementSystemContext _db = new DbHospitalManagementSystemContext();
-        private ContentWindow contentWindow;
+        private readonly DbHospitalManagementSystemContext _db = new();
+        private ContentWindow _contentWindow;
 
         private void MainWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
 
@@ -26,28 +26,23 @@ namespace WPF_HospitalManagementSystem.Views
 
         private void txtPass_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            bool touched = true;
-            if (touched)
-                txtPass.Password = "";
+            txtPass.Password = "";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var query = (from x in _db.TblAdmins
-                         where x.Username == txtUsername.Text & x.Password == txtPass.Password
-                         select x);
+            IQueryable<TblAdmin> query = _db.TblAdmins.Where(x => x.Username == txtUsername.Text & x.Password == txtPass.Password);
 
             if (query.Any())
             {
                 MessageBox.Show("Successfully Logged in", "Login Successful", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                contentWindow = new ContentWindow();
-                contentWindow.Show();
-                this.Hide();
+                _contentWindow = new ContentWindow();
+                _contentWindow.Show();
+                Hide();
             }
             else
-            {
                 MessageBox.Show("Invalid Username or Password", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+
         }
     }
 }

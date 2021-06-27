@@ -39,7 +39,6 @@
                 <TextBlock TextAlignment="Center"><Run Text="Clear" /></TextBlock>
             </StackPanel>
         </Button>
-        <Frame
-            x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Margin="104,12,0,0" Width="930" NavigationUIVisibility="Hidden" Height="480" VerticalAlignment="Top" />
+        <Frame x:Name="MyFrame" Grid.Column="1" HorizontalAlignment="Left" Margin="104,12,0,0" Width="930" NavigationUIVisibility="Hidden" Height="480" VerticalAlignment="Top" />
     </Grid>
 </Window>

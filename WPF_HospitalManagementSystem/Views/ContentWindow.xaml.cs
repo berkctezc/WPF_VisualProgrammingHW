@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WPF_HospitalManagementSystem.Views
 {
@@ -19,38 +9,21 @@ namespace WPF_HospitalManagementSystem.Views
     /// </summary>
     public partial class ContentWindow : Window
     {
-        public ContentWindow()
+        public void InformationalBox(string messageText, string caption,
+            object newContent = null, MessageBoxButton buttonType = MessageBoxButton.OK,
+            MessageBoxImage imageType = MessageBoxImage.Asterisk, int duration = 200)
         {
-            InitializeComponent();
-        }
-
-        private Branches _branchesWindow;
-        private Doctors _doctorsWindow;
-        private Nurses _nursesWindow;
-
-        private void Branches_Click(object sender, RoutedEventArgs e)
-        {
-            _branchesWindow = new Branches();
             MyFrame.Content = null;
-            MyFrame.Content = _branchesWindow;
+            MyFrame.Content = newContent;
+            Thread.Sleep(duration);
+            MessageBox.Show(messageText, caption, buttonType, imageType);
         }
 
-        private void Doctors_Click(object sender, RoutedEventArgs e)
-        {
-            _doctorsWindow = new Doctors();
-            MyFrame.Content = null;
-            MyFrame.Content = _doctorsWindow;
-        }
-
-        private void Nurses_Click(object sender, RoutedEventArgs e)
-        {
-            _nursesWindow = new Nurses();
-            MyFrame.Content = null;
-            MyFrame.Content = _nursesWindow;
-        }
-
-        private void Clear_Click(object sender, RoutedEventArgs e) => MyFrame.Content = null;
-
+        public ContentWindow() => InitializeComponent();
         private void ContentWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
+        private void Branches_Click(object sender, RoutedEventArgs e) => InformationalBox("Branch Data Loaded", "Loaded", new Branches());
+        private void Doctors_Click(object sender, RoutedEventArgs e) => InformationalBox("Doctor Data Loaded", "Loaded", new Doctors());
+        private void Nurses_Click(object sender, RoutedEventArgs e) => InformationalBox("Nurse Data Loaded", "Loaded", new Nurses());
+        private void Clear_Click(object sender, RoutedEventArgs e) => InformationalBox("Screen is Cleared", "Clear", duration: 150);
     }
 }
