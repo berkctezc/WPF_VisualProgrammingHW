@@ -13,9 +13,9 @@ namespace WPF_HospitalManagementSystem.Views
     {
         public Nurses() => InitializeComponent();
 
-        private static DbHospitalManagementSystemContext _db = new();
+        private static readonly DbHospitalManagementSystemContext _db = new();
 
-        private IQueryable<NurseViewModel> initialData = _db.TblNurses.Select(x => new NurseViewModel()
+        private readonly IQueryable<NurseViewModel> _initialData = _db.TblNurses.Select(x => new NurseViewModel()
         {
             Id = x.Id,
             Name = x.Name,
@@ -41,7 +41,7 @@ namespace WPF_HospitalManagementSystem.Views
         {
             dg.ItemsSource = null;
 
-            dg.ItemsSource = initialData.ToList();
+            dg.ItemsSource = _initialData.ToList();
 
             comboClinic.ItemsSource = (from x in _db.TblBranches
                                        select new
@@ -55,8 +55,8 @@ namespace WPF_HospitalManagementSystem.Views
         {
             int? nurseId = (dg.SelectedItem as NurseViewModel)?.Id;
             txtId.Text = nurseId.ToString();
-            txtName.Text = (dg.SelectedItem as NurseViewModel)?.Name;
-            txtSurname.Text = (dg.SelectedItem as NurseViewModel)?.Surname;
+            txtName.Text = (dg.SelectedItem as NurseViewModel)?.Name!;
+            txtSurname.Text = (dg.SelectedItem as NurseViewModel)?.Surname!;
             comboClinic.Text = (dg.SelectedItem as NurseViewModel)?.Policlinic;
             dateBirth.SelectedDate = (dg.SelectedItem as NurseViewModel)?.Birthofdate;
         }
@@ -103,7 +103,7 @@ namespace WPF_HospitalManagementSystem.Views
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Read();
-            dg.ItemsSource = initialData
+            dg.ItemsSource = _initialData
                 .Where(x =>
                     x.Name.Contains(txtSearch.Text) ||
                     x.Surname.Contains(txtSearch.Text) ||

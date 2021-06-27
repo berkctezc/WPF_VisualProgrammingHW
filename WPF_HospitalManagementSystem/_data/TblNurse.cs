@@ -4,7 +4,7 @@
 
 namespace WPF_HospitalManagementSystem._data
 {
-    public partial class TblNurse
+    public class TblNurse
     {
         public int Id { get; set; }
         public string Name { get; set; }

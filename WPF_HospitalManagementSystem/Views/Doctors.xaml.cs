@@ -15,9 +15,9 @@ namespace WPF_HospitalManagementSystem.Views
     {
         public Doctors() => InitializeComponent();
 
-        private static DbHospitalManagementSystemContext _db = new();
+        private static readonly DbHospitalManagementSystemContext _db = new();
 
-        private IQueryable<DoctorViewModel> initialData = _db.TblDoctors.Select(x => new DoctorViewModel()
+        private readonly IQueryable<DoctorViewModel> _initialData = _db.TblDoctors.Select(x => new DoctorViewModel()
         {
             Id = x.Id,
             Name = x.Name,
@@ -43,7 +43,7 @@ namespace WPF_HospitalManagementSystem.Views
         {
             dg.ItemsSource = null;
 
-            dg.ItemsSource = initialData.ToList();
+            dg.ItemsSource = _initialData.ToList();
 
             comboBranch.ItemsSource = (from x in _db.TblBranches
                                        select new
@@ -65,7 +65,7 @@ namespace WPF_HospitalManagementSystem.Views
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            TblDoctor newDoctor = new TblDoctor()
+            TblDoctor newDoctor = new()
             {
                 Name = txtName.Text,
                 Surname = txtSurname.Text,
@@ -105,7 +105,7 @@ namespace WPF_HospitalManagementSystem.Views
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Read();
-            dg.ItemsSource = initialData
+            dg.ItemsSource = _initialData
                 .Where(x =>
                     x.Name.Contains(txtSearch.Text) ||
                     x.Surname.Contains(txtSearch.Text) ||

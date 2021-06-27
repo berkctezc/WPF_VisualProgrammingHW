@@ -16,7 +16,7 @@ namespace WPF_HospitalManagementSystem.Views
             InitializeComponent();
         }
 
-        private DbHospitalManagementSystemContext _db = new();
+        private readonly DbHospitalManagementSystemContext _db = new();
 
         private void Branches_Load(object sender, EventArgs e)
         {
@@ -31,8 +31,8 @@ namespace WPF_HospitalManagementSystem.Views
 
         private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            txtId.Text = (dg.SelectedItem as TblBranch)?.Id.ToString();
-            txtBranch.Text = (dg.SelectedItem as TblBranch)?.Branch;
+            txtId.Text = (dg.SelectedItem as TblBranch)?.Id.ToString()!;
+            txtBranch.Text = (dg.SelectedItem as TblBranch)?.Branch!;
         }
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)

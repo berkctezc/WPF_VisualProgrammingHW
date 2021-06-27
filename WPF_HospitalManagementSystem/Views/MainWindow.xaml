@@ -19,7 +19,8 @@
                  Margin="16,0,-235,115" Text="Username" Grid.Column="1" GotKeyboardFocus="txtUsername_GotKeyboardFocus" Height="21" VerticalAlignment="Bottom" />
         <PasswordBox x:Name="txtPass" Margin="16,0,-236,85" GotKeyboardFocus="txtPass_GotKeyboardFocus" Password="password" Grid.ColumnSpan="2"
                      Grid.Column="0" Height="22" VerticalAlignment="Bottom" />
-        <Image Margin="64,13,-178,0" Source="../_assets/user.png" Grid.ColumnSpan="2" RenderTransformOrigin="0.608,0.253" Height="73" VerticalAlignment="Top" />
+        <Image Margin="64,13,-178,0" Source="../_assets/user.png" Grid.ColumnSpan="2" Grid.Column="0"
+               RenderTransformOrigin="0.608,0.253" Height="73" VerticalAlignment="Top" />
         <Button x:Name="loginButton" Content="Press Here To Login" Margin="28,0,-210,20" Click="Button_Click" Grid.ColumnSpan="2"
                 Grid.Column="0" Height="40" VerticalAlignment="Bottom" />
     </Grid>

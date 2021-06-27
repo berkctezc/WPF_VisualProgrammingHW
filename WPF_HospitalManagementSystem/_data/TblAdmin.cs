@@ -2,7 +2,7 @@
 
 namespace WPF_HospitalManagementSystem._data
 {
-    public partial class TblAdmin
+    public class TblAdmin
     {
         public int Id { get; set; }
         public string Name { get; set; }

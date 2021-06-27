@@ -4,7 +4,7 @@
 
 namespace WPF_HospitalManagementSystem._data
 {
-    public partial class TblBranch
+    public sealed class TblBranch
     {
         public TblBranch()
         {
@@ -16,7 +16,7 @@ namespace WPF_HospitalManagementSystem._data
         public string Branch { get; set; }
         public bool? Status { get; set; }
 
-        public virtual ICollection<TblDoctor> TblDoctors { get; set; }
-        public virtual ICollection<TblNurse> TblNurses { get; set; }
+        public ICollection<TblDoctor> TblDoctors { get; set; }
+        public ICollection<TblNurse> TblNurses { get; set; }
     }
 }
