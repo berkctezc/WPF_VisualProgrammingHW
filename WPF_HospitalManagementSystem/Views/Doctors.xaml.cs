@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_HospitalManagementSystem._data;
+using WPF_HospitalManagementSystem.ViewModels;
 
 namespace WPF_HospitalManagementSystem.Views
 {
@@ -22,20 +24,70 @@ namespace WPF_HospitalManagementSystem.Views
     {
         public Doctors() => InitializeComponent();
 
-        private void Doctors_Load(object sender, RoutedEventArgs e)
+        private DbHospitalManagementSystemContext _db = new();
+
+        private void Doctors_Load(object sender, RoutedEventArgs e) => Read();
+
+        private void Clear()
         {
-            //
+            txtName.Text = "";
+            txtSurname.Text = "";
+            txtId.Text = "";
+            txtSearch.Text = "";
+            comboBranch.Text = "";
+            dateBirth.Text = "";
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private void Read()
         {
-            //
+            dg.ItemsSource = null;
+
+            dg.ItemsSource = _db.TblDoctors.Select(x => new DoctorViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Surname = x.Surname,
+                Branch = x.BranchNavigation.Branch,
+                Birthofdate = x.Birthofdate,
+                Status = x.Status
+            }).ToList();
+
+            comboBranch.ItemsSource = (from x in _db.TblBranches
+                                       select new
+                                       {
+                                           x.Id,
+                                           x.Branch
+                                       }).ToList();
         }
 
-        private void btnRead_Click(object sender, RoutedEventArgs e)
+      private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            //
+            int? docId = (dg.SelectedItem as DoctorViewModel)?.Id;
+            txtId.Text = docId.ToString();
+            txtName.Text = (dg.SelectedItem as DoctorViewModel)?.Name;
+            txtSurname.Text = (dg.SelectedItem as DoctorViewModel)?.Surname;
+            comboBranch.Text = (dg.SelectedItem as DoctorViewModel)?.Branch;
+            dateBirth.SelectedDate = (dg.SelectedItem as DoctorViewModel)?.Birthofdate;
         }
+
+        private async void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            TblDoctor newDoctor = new TblDoctor()
+            {
+                Name = txtName.Text,
+                Surname = txtName.Text,
+                Branch = _db.TblBranches.Single(x=>x.Branch == comboBranch.Text).Id,
+                Birthofdate = dateBirth.SelectedDate,
+                Status = true
+            };
+
+            _db.TblDoctors.Add(newDoctor);
+            _ = await _db.SaveChangesAsync();
+            Clear();
+            Read();
+        }
+
+        private void btnRead_Click(object sender, RoutedEventArgs e) => Read();
 
         private void btnUptd_Click(object sender, RoutedEventArgs e)
         {
@@ -47,10 +99,7 @@ namespace WPF_HospitalManagementSystem.Views
             //
         }
 
-        private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //
-        }
+  
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
