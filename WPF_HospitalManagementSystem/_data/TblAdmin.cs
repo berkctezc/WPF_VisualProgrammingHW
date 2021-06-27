@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
-
-namespace WPF_HospitalManagementSystem._data
+﻿namespace WPF_HospitalManagementSystem._data
 {
     public partial class TblAdmin
     {

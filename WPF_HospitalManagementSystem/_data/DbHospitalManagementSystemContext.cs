@@ -1,8 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-
-#nullable disable
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace WPF_HospitalManagementSystem._data
 {
@@ -87,11 +83,6 @@ namespace WPF_HospitalManagementSystem._data
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Age)
-                    .HasMaxLength(2)
-                    .IsUnicode(false)
-                    .HasColumnName("AGE");
-
                 entity.Property(e => e.Birthofdate)
                     .HasColumnType("smalldatetime")
                     .HasColumnName("BIRTHOFDATE");
@@ -111,8 +102,6 @@ namespace WPF_HospitalManagementSystem._data
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("SURNAME");
-
-                entity.Property(e => e.Title).HasColumnName("TITLE");
 
                 entity.HasOne(d => d.BranchNavigation)
                     .WithMany(p => p.TblDoctors)
