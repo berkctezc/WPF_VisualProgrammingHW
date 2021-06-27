@@ -34,7 +34,6 @@
     <Resource Include="_assets\clear.png" />
     <Resource Include="_assets\doctor.png" />
     <Resource Include="_assets\hospital.png" />
-    <Resource Include="_assets\key.png" />
     <Resource Include="_assets\nurse.png" />
     <Resource Include="_assets\user.png" />
   </ItemGroup>
