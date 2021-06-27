@@ -42,9 +42,12 @@ namespace WPF_HospitalManagementSystem.Views
                 Status = true
             };
 
-            _db.TblBranches.Add(newBranch);
-            _ = await _db.SaveChangesAsync();
-            Read();
+            if (!txtBranch.Text.Equals(""))
+            {
+                _db.TblBranches.Add(newBranch);
+                _ = await _db.SaveChangesAsync();
+                Read();
+            }
         }
 
         private void btnRead_Click(object sender, RoutedEventArgs e)
