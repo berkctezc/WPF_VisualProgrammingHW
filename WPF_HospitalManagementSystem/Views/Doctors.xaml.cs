@@ -20,9 +20,41 @@ namespace WPF_HospitalManagementSystem.Views
     /// </summary>
     public partial class Doctors : Page
     {
-        public Doctors()
+        public Doctors() => InitializeComponent();
+
+        private void Doctors_Load(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
+            //
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+        private void btnRead_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+        private void btnUptd_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //
+        }
+
+        private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            //
+        }
+
+        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            //
         }
     }
 }

@@ -4,8 +4,93 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Doctors">
+  d:DesignHeight="480" d:DesignWidth="930"
+      Title="Doctors"
+      Background="White"
+      Loaded="Doctors_Load">
 
-    <Grid />
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF5BD3D3" Offset="0.007"/>
+                <GradientStop Color="#FF034B4B" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="361*" />
+            <ColumnDefinition Width="104*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Operations" FontSize="16" HorizontalAlignment="Left" Height="454" Margin="716,19,0,7" Width="192" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE64C4C"/>
+                        <GradientStop Color="#FFD4A0A0" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="16,6,134,390" />
+                <TextBox x:Name="txtId" Height="30" TextWrapping="Wrap" Margin="60,9,24,387" IsEnabled="False" />
+                <Label Content="Name" Height="32" VerticalAlignment="Top" Margin="4,32,120,0" />
+                <TextBox x:Name="txtName" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,58,4,0" RenderTransformOrigin="0.941,0.633" />
+                <Label Content="Surname" Height="32" VerticalAlignment="Top" Margin="4,84,64,0" />
+                <TextBox x:Name="txtSurname" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="4,111,4,0" RenderTransformOrigin="0.941,0.633" />
+                <Label Content="Branch" Height="28" VerticalAlignment="Top" Margin="4,136,116,0" />
+                <ComboBox x:Name="comboBranch" DisplayMemberPath="Branch" SelectedValuePath="ID" Margin="4,165,4,0" VerticalAlignment="Top" />
+                <Label Content="Birthdate" Height="28" VerticalAlignment="Top" Margin="4,188,98,0" />
+                <DatePicker HorizontalAlignment="Center" Margin="0,216,0,0" VerticalAlignment="Top" Width="169"/>
+                <TextBox x:Name="txtSearch" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Margin="7,350,5,0" RenderTransformOrigin="0.941,0.633" TextChanged="txtSearch_TextChanged" />
+                <Button x:Name="btnCreate" Content="Create" Margin="4,382,122,6" Click="btnCreate_Click" Width="52" Height="36" BorderBrush="#FF39D30B" Foreground="White" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF688B5B"/>
+                            <GradientStop Color="#FF329B0B" Offset="0.91"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnRead" Content="Refresh" Margin="61,382,63,6" Click="btnRead_Click" Height="36" Width="56" Foreground="White" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF180B99"/>
+                            <GradientStop Color="#FF4899EA" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnUpdate" Content="Update" Margin="120,382,4,7" Click="btnUptd_Click" Height="36" BorderBrush="{x:Null}" Foreground="White" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF3C3C0D"/>
+                            <GradientStop Color="#FFC1C108" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Label Content="Search" Height="30" VerticalAlignment="Top" Margin="4,317,118,0" />
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="0" Header="Doctors" FontSize="16" HorizontalAlignment="Left" Height="460" Margin="11,10,0,0" VerticalAlignment="Top" Width="695">
+            <DataGrid AlternatingRowBackground="DarkSeaGreen" RowBackground="Khaki" IsReadOnly="True"
+                AutoGenerateColumns="False"
+                ColumnWidth="*" SelectedCellsChanged="DataGrid_OnSelectedCellsChanged" x:Name="dg" x:FieldModifier="public" HorizontalAlignment="Left" Height="420" Margin="0,7,0,0" VerticalAlignment="Top" Width="680">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontWeight="Bold" Header="#" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Branch" Binding="{Binding Branch}" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Action" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_OnClick" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+    </Grid>
 </Page>

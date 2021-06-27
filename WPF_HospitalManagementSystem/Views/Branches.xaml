@@ -9,13 +9,25 @@
       Background="White"
       Loaded="Branches_Load">
 
-    <Grid Background="AliceBlue">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF57D496" Offset="0"/>
+                <GradientStop Color="#FF07532D" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="361*" />
             <ColumnDefinition Width="104*" />
         </Grid.ColumnDefinitions>
         <GroupBox Header="Operations" FontSize="16" HorizontalAlignment="Left" Height="454" Margin="716,19,0,7" Width="192" Grid.ColumnSpan="2">
-            <Grid Background="LightGray">
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFECEBDC" Offset="1"/>
+                        <GradientStop Color="#FFB8B230" Offset="0"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
                 <Label Content="ID" Width="30" Height="30" RenderTransformOrigin="1.033,-1.3" Margin="16,6,134,390" />
                 <TextBox x:Name="txtId" Height="30" TextWrapping="Wrap" Margin="60,9,24,387" IsEnabled="False" />
                 <Label Content="Branch Name" Height="32" VerticalAlignment="Top" Margin="4,39,59,0" />
