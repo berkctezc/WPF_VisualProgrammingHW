@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,16 +78,19 @@ namespace WPF_HospitalManagementSystem.Views
             TblDoctor newDoctor = new TblDoctor()
             {
                 Name = txtName.Text,
-                Surname = txtName.Text,
-                Branch = _db.TblBranches.Single(x => x.Branch == comboBranch.Text).Id,
+                Surname = txtSurname.Text,
+                Branch = _db.TblBranches.SingleOrDefault(x => x.Branch == comboBranch.Text)?.Id,
                 Birthofdate = dateBirth.SelectedDate,
                 Status = true
             };
 
-            _db.TblDoctors.Add(newDoctor);
-            _ = await _db.SaveChangesAsync();
-            Clear();
-            Read();
+            if (!txtName.Text.Equals("") || !txtSurname.Text.Equals(""))
+            {
+                _db.TblDoctors.Add(newDoctor);
+                _ = await _db.SaveChangesAsync();
+                Clear();
+                Read();
+            }
         }
 
         private void btnRead_Click(object sender, RoutedEventArgs e) => Read();
@@ -110,7 +114,7 @@ namespace WPF_HospitalManagementSystem.Views
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Read();
             dg.ItemsSource = initialData
                 .Where(x =>
                     x.Name.Contains(txtSearch.Text) ||
