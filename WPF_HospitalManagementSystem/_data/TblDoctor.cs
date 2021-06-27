@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 #nullable disable
 
 namespace WPF_HospitalManagementSystem._data
 {
-    public class TblDoctor
+    public partial class TblDoctor
     {
         public int Id { get; set; }
         public string Name { get; set; }

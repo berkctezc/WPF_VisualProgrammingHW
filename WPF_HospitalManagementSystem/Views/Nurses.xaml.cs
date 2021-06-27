@@ -1,6 +1,17 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using WPF_HospitalManagementSystem._data;
 using WPF_HospitalManagementSystem.ViewModels;
 
@@ -13,9 +24,9 @@ namespace WPF_HospitalManagementSystem.Views
     {
         public Nurses() => InitializeComponent();
 
-        private static readonly DbHospitalManagementSystemContext _db = new();
+        private static DbHospitalManagementSystemContext _db = new();
 
-        private readonly IQueryable<NurseViewModel> _initialData = _db.TblNurses.Select(x => new NurseViewModel()
+        IQueryable<NurseViewModel> initialData = _db.TblNurses.Select(x => new NurseViewModel()
         {
             Id = x.Id,
             Name = x.Name,
@@ -41,7 +52,7 @@ namespace WPF_HospitalManagementSystem.Views
         {
             dg.ItemsSource = null;
 
-            dg.ItemsSource = _initialData.ToList();
+            dg.ItemsSource = initialData.ToList();
 
             comboClinic.ItemsSource = (from x in _db.TblBranches
                                        select new
@@ -55,11 +66,13 @@ namespace WPF_HospitalManagementSystem.Views
         {
             int? nurseId = (dg.SelectedItem as NurseViewModel)?.Id;
             txtId.Text = nurseId.ToString();
-            txtName.Text = (dg.SelectedItem as NurseViewModel)?.Name!;
-            txtSurname.Text = (dg.SelectedItem as NurseViewModel)?.Surname!;
+            txtName.Text = (dg.SelectedItem as NurseViewModel)?.Name;
+            txtSurname.Text = (dg.SelectedItem as NurseViewModel)?.Surname;
             comboClinic.Text = (dg.SelectedItem as NurseViewModel)?.Policlinic;
             dateBirth.SelectedDate = (dg.SelectedItem as NurseViewModel)?.Birthofdate;
         }
+
+
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
@@ -100,10 +113,11 @@ namespace WPF_HospitalManagementSystem.Views
             }
         }
 
+
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Read();
-            dg.ItemsSource = _initialData
+            dg.ItemsSource = initialData
                 .Where(x =>
                     x.Name.Contains(txtSearch.Text) ||
                     x.Surname.Contains(txtSearch.Text) ||

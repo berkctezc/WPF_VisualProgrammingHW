@@ -20,15 +20,10 @@ namespace WPF_HospitalManagementSystem.Views
         }
 
         public ContentWindow() => InitializeComponent();
-
         private void ContentWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
-
         private void Branches_Click(object sender, RoutedEventArgs e) => InformationalBox("Branch Data Loaded", "Loaded", new Branches());
-
         private void Doctors_Click(object sender, RoutedEventArgs e) => InformationalBox("Doctor Data Loaded", "Loaded", new Doctors());
-
         private void Nurses_Click(object sender, RoutedEventArgs e) => InformationalBox("Nurse Data Loaded", "Loaded", new Nurses());
-
         private void Clear_Click(object sender, RoutedEventArgs e) => InformationalBox("Screen is Cleared", "Clear", duration: 150);
     }
 }

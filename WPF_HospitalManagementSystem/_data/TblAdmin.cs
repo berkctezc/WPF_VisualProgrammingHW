@@ -1,8 +1,11 @@
-﻿#nullable disable
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
 
 namespace WPF_HospitalManagementSystem._data
 {
-    public class TblAdmin
+    public partial class TblAdmin
     {
         public int Id { get; set; }
         public string Name { get; set; }

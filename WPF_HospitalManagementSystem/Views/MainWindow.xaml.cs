@@ -42,6 +42,7 @@ namespace WPF_HospitalManagementSystem.Views
             }
             else
                 MessageBox.Show("Invalid Username or Password", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
         }
     }
 }

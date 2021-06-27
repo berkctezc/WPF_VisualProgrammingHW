@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
 namespace WPF_HospitalManagementSystem._data
 {
-    public class DbHospitalManagementSystemContext : DbContext
+    public partial class DbHospitalManagementSystemContext : DbContext
     {
         public DbHospitalManagementSystemContext()
         {
@@ -147,9 +148,6 @@ namespace WPF_HospitalManagementSystem._data
             OnModelCreatingPartial(modelBuilder);
         }
 
-        private void OnModelCreatingPartial(ModelBuilder modelBuilder)
-        {
-            throw new NotImplementedException();
-        }
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

@@ -15,8 +15,7 @@ namespace WPF_HospitalManagementSystem.Views
         {
             InitializeComponent();
         }
-
-        private readonly DbHospitalManagementSystemContext _db = new();
+        private DbHospitalManagementSystemContext _db = new();
 
         private void Branches_Load(object sender, EventArgs e)
         {
@@ -31,8 +30,8 @@ namespace WPF_HospitalManagementSystem.Views
 
         private void DataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            txtId.Text = (dg.SelectedItem as TblBranch)?.Id.ToString()!;
-            txtBranch.Text = (dg.SelectedItem as TblBranch)?.Branch!;
+            txtId.Text = (dg.SelectedItem as TblBranch)?.Id.ToString();
+            txtBranch.Text = (dg.SelectedItem as TblBranch)?.Branch;
         }
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
@@ -72,8 +71,7 @@ namespace WPF_HospitalManagementSystem.Views
         private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
             int? branchId = (dg.SelectedItem as TblBranch)?.Id;
-            if (branchId != null)
-            {
+            if (branchId!=null){
                 TblBranch branchToDelete = _db.TblBranches.Single(a => a.Id == branchId);
                 _db.TblBranches.Remove(branchToDelete);
                 _ = await _db.SaveChangesAsync();

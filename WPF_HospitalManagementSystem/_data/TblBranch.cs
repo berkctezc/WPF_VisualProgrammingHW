@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 #nullable disable
 
 namespace WPF_HospitalManagementSystem._data
 {
-    public sealed class TblBranch
+    public partial class TblBranch
     {
         public TblBranch()
         {
@@ -16,7 +17,7 @@ namespace WPF_HospitalManagementSystem._data
         public string Branch { get; set; }
         public bool? Status { get; set; }
 
-        public ICollection<TblDoctor> TblDoctors { get; set; }
-        public ICollection<TblNurse> TblNurses { get; set; }
+        public virtual ICollection<TblDoctor> TblDoctors { get; set; }
+        public virtual ICollection<TblNurse> TblNurses { get; set; }
     }
 }
