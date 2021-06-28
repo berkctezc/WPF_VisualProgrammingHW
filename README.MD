@@ -16,7 +16,7 @@ This repo contains two projects for WPF learning purposes. A Library Management 
 
 <img src="WPF_HospitalManagementSystem/README_assets/login_success.png" alt="view" style="zoom:75%;" />
 
-<img src="WPF_HospitalManagementSystem/README_assets/login_success.png" alt="view" style="zoom:75%;" />
+<img src="WPF_HospitalManagementSystem/README_assets/login_fail.png" alt="view" style="zoom:75%;" />
 
 <img src="WPF_HospitalManagementSystem/README_assets/view1.png" alt="view" style="zoom:75%;" />
 
