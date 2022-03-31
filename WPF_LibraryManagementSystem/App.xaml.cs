@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WPF_LibraryManagementSystem.Views
+namespace WPF_LibraryManagementSystem
 {
     /// <summary>
     /// Interaction logic for App.xaml
