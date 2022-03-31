@@ -4,45 +4,44 @@ using System.Windows;
 using System.Windows.Input;
 using WPF_HospitalManagementSystem._data;
 
-namespace WPF_HospitalManagementSystem.Views
+namespace WPF_HospitalManagementSystem.Views;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow() => InitializeComponent();
+
+    private readonly DbHospitalManagementSystemContext _db = new();
+    private ContentWindow _contentWindow;
+
+    private void MainWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
+
+    private void txtUsername_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
     {
-        public MainWindow() => InitializeComponent();
+        if (txtUsername.Text == "Username")
+            txtUsername.Text = "";
+    }
 
-        private readonly DbHospitalManagementSystemContext _db = new();
-        private ContentWindow _contentWindow;
+    private void txtPass_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+    {
+        txtPass.Password = "";
+    }
 
-        private void MainWindow_OnClosed(object sender, EventArgs e) => Environment.Exit(0);
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        IQueryable<TblAdmin> query = _db.TblAdmins.Where(x => x.Username == txtUsername.Text & x.Password == txtPass.Password);
 
-        private void txtUsername_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        if (query.Any())
         {
-            if (txtUsername.Text == "Username")
-                txtUsername.Text = "";
+            MessageBox.Show("Successfully Logged in", "Login Successful", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            _contentWindow = new ContentWindow();
+            _contentWindow.Show();
+            Hide();
         }
+        else
+            MessageBox.Show("Invalid Username or Password", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
-        private void txtPass_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            txtPass.Password = "";
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            IQueryable<TblAdmin> query = _db.TblAdmins.Where(x => x.Username == txtUsername.Text & x.Password == txtPass.Password);
-
-            if (query.Any())
-            {
-                MessageBox.Show("Successfully Logged in", "Login Successful", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                _contentWindow = new ContentWindow();
-                _contentWindow.Show();
-                Hide();
-            }
-            else
-                MessageBox.Show("Invalid Username or Password", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
-        }
     }
 }
